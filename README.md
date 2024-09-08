@@ -11,7 +11,7 @@ Actuellement nous sommes une équipe de 5 personnes: Séraphin, Nazar, Luis Migu
 - [Dossier complet de présentation du jeu (en pdf)]()
 - [Moodboard]()
 - [Mockups du jeu]()
-- [Etudes de l'existant]()
+- [Etudes de l'existant](https://www.figma.com/board/TzOCzQbDci5kVt4ebz25BO/Etude-de-l'existant?node-id=0-1&t=QVVMHzJ765sacZpZ-1)
 
 ## GDD (Game Design Document)
 J'encourage fortement à aller voir le site [Game UI Database](https://www.gameuidatabase.com)

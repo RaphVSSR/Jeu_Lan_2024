@@ -31,3 +31,14 @@
   Lorsque tout les membres d'une équipe sont éliminés, la partie se finie et l'équipe encore en lisse remporte le match.
 
 ---
+
+# Bilan de la réu du 08/09/24
+
+- Faire uniquement 1 dossier de présentation du jeu avec 2 aspects: ***full compétitif*** et ***plus détente***
+- Garder de côté l'idée de faire un jeu de plateau type Game Party comme Mario Party ou Pumel Party
+
+## A propos du jeu
+On reste globalement sur le concept amené jusqu'ici, on à rajouté le fait de donner la possibilité aux spectateurs de lancer les objets secondaire sur la map au lieu qu'ils soient apparu par le jeu.
+
+Globalement la partie se déroulera en relais; sur la map il y aura uniquement un 1v1 et les joueurs actuels pourront uniquement voir ce qui se passe sur la map. Sauf que les spectateurs voient en plus leur coéquipiers.
+Une fois que le 1er joueur se prend un hit il devient spectateur et c'est au second de prendre place sur la map et ainsi de suite jusqu'à ce qu'un joueur se prend 3 hit, il est alors éliminé et devient spectateur mais il ne pourra pas interagir avec ce qui se passe sur la map.
