@@ -1,13 +1,13 @@
 # 1. Présentation
 - *Nom:*
-- *Type de jeu:* Jeu de combat arcade en 2D
-- *Plateformes:* Principalement sur PC et consoles
-- *Nb de joueurs:* 6 (3 par équipes)
-- *Temps de jeu:* ~3 à 5min
-- *Coeur de cible:* Les étudiants et les jeunes arrivants à l'IUT
+- *Type de jeu:* **Jeu de combat arcade en 2D**
+- *Plateformes:* **Principalement sur PC et consoles**
+- *Nb de joueurs:* **6 (3 par équipes)**
+- *Temps de jeu:* **~3 à 5min**
+- *Coeur de cible:* **Les étudiants et les jeunes arrivants à l'IUT**
 - *Unique selling points:* *(les 2 ou 3 points forts et uniques du jeu)*
 - *Temps de développement:*
-- *Échéances:* Le 18 décembre **_au plus tard_**
+- *Échéances:* **Le 18 décembre _au plus tard_**
 ### Logiciels
 - GameMaker
 - Figjam
@@ -32,9 +32,11 @@ les autres personnages ?*
 
 ### 4.4 **Core Gameplay**
    - Piliers du jeu: Combat, objets, stratégie, communication
-   - La partie se déroule en équipe de 3, 1 joueur initial et 2 "spectateurs".
-Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire pour pouvoir tirer un avantage sur son adversaire. Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipiers puis il devient spectateur. Chaque joueur à 3 hits en tant que barre de vie, une fois touché 3 fois, il est définitivement éliminé.
-Lorsque tout les membres d'une équipe sont éliminés, celle-ci aura perdu.
+---
+La partie se déroule en équipe de 3, 1 joueur initial et 2 "spectateurs". Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire pour pouvoir tirer un avantage sur son adversaire.
+
+Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipiers puis il devient spectateur. Chaque joueur à 3 hits en tant que barre de vie, une fois touché 3 fois, il est définitivement éliminé. Lorsque tout les membres d'une équipe sont éliminés, celle-ci aura perdu.
+
 Il y a 8 personnages à disponibilité, avec 8 ulti différents. Ceux-ci pourront être activés au cours de la partie à l'aide de l'apparition d'un consommable.
 
 ### 4.5 **Conditions de victoire et de défaite**
