@@ -43,4 +43,12 @@ On reste globalement sur le concept amené jusqu'ici, on à rajouté le fait de 
 Globalement la partie se déroulera en relais; sur la map il y aura uniquement un 1v1 et les joueurs actuels pourront uniquement voir ce qui se passe sur la map. Sauf que les spectateurs voient en plus leur coéquipiers.
 Une fois que le 1er joueur se prend un hit il devient spectateur et c'est au second de prendre place sur la map et ainsi de suite jusqu'à ce qu'un joueur se prend 3 hit, il est alors éliminé et devient spectateur mais il ne pourra pas interagir avec ce qui se passe sur la map.
 
-## Bilan de la réu du 09/09/24
+# Bilan de la réu du 09/09/24
+
+- Deux équipes
+- Les 8 persos on enlève
+- On en garde que 2 avec deux ulti qui sont donné aléatoirement
+- Les deux perso : équipe 1 = ancienne mascot, équipe 2 = nouvelle mascot askip
+- 1 pc host qui créé un serveur (comme trackmania l'année dernière)
+- Une map proto séparé en deux : un coté ancien thème MMI LAN et autre coté nouveau thème MMI LAN
+
