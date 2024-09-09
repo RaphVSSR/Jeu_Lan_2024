@@ -5,8 +5,8 @@
 - *Nb de joueurs:* **6 (3 par équipes)**
 - *Temps de jeu:* **~3 à 5min**
 - *Coeur de cible:* **Les étudiants et les jeunes arrivants à l'IUT**
-- *Unique selling points:* *(les 2 ou 3 points forts et uniques du jeu)*
-- *Temps de développement:*
+- *Unique selling points:* **Les spectateurs ont un rôle dans le déroulement de la partie, le jeu est dynamique, chaque partie est unique**
+- *Temps de développement:* **1 mois et quelques** (minimum)
 - *Échéances:* **Le 18 décembre _au plus tard_**
 ### Logiciels
 - GameMaker
@@ -26,18 +26,17 @@
 
 ### 4.3 **Les 3C**
    - Caméra: Caméra fixe (écran = taille de map)
-   - Character: *Quelle est la personne incarnée ? Comment est-elle représentée ? Quels sont
-les autres personnages ?*
+   - Character: **Il y a 2 personnages principaux: la mascotte de l'année dernière et la potentielle nouvelle mascotte. Toutes 2 seront incarnées par des joueurs**
    - Controller: Le jeu va être basé sur les contrôles de manettes (universelles) mais il peut être adapté pour les claviers/souris
 
 ### 4.4 **Core Gameplay**
-   - Piliers du jeu: Combat, objets, stratégie, communication
+   - Piliers du jeu: Versus, objets, stratégie, équipes
 ---
-La partie se déroule en équipe de 3, 1 joueur initial et 2 "spectateurs". Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire pour pouvoir tirer un avantage sur son adversaire.
+La partie se déroule en 2 équipes de 3, 1 joueur initial et 2 "spectateurs" par équipe. Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire et/ou consommables pour pouvoir tirer un avantage sur son adversaire. Quelques décors interactifs offriront également la possibilité d'obtenir un avantage.
 
-Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipiers puis il devient spectateur. Chaque joueur à 3 hits en tant que barre de vie, une fois touché 3 fois, il est définitivement éliminé. Lorsque tout les membres d'une équipe sont éliminés, celle-ci aura perdu.
+Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipiers puis il devient spectateur. Chaque joueur a 3 hits en tant que vie, une fois touché 3 fois, il est définitivement éliminé. Lorsque tout les membres d'une équipe sont éliminés, celle-ci perd la partie.
 
-Il y a 8 personnages à disponibilité, avec 8 ulti différents. Ceux-ci pourront être activés au cours de la partie à l'aide de l'apparition d'un consommable.
+1 ulti pourra apparaître durant la partie ce qui offrira un gros avantage au joueur qui le prendra.
 
 ### 4.5 **Conditions de victoire et de défaite**
    - Pour gagner on doit éliminer tout les membres de l'équipe adverse. A la fin du temps limite, c'est l'équipe avec le plus de membres encore en lisse qui gagne.
