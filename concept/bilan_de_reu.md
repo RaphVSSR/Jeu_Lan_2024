@@ -51,4 +51,18 @@ Une fois que le 1er joueur se prend un hit il devient spectateur et c'est au sec
 - Les deux perso : équipe 1 = ancienne mascot, équipe 2 = nouvelle mascot askip
 - 1 pc host qui créé un serveur (comme trackmania l'année dernière)
 - Une map proto séparé en deux : un coté ancien thème MMI LAN et autre coté nouveau thème MMI LAN
+- Lors d'un hit d'un jour => reset de la map + swap des deux joueurs, soit 9 vies VS 8 vies 
+
+## Objets et consommables 
+- Objets plaçable par les spectateurs (vu avec des carreaux)
+   - Bumper
+   - Piques
+   - plateforme temporaire et plateforme destructible par rapport au temps passé dessus/le nombre de sauts dessus
+   - Ventilateur
+   - Laser qui traverse la map horizontalement/verticalement
+- Consommable droppé par la map avec un cooldownn (non défini) et droppé par les spectateurs
+   - coup de poing
+   - Trou noir
+   - Champ répulsif
+   - Bombe gluante
 
