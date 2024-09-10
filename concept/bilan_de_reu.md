@@ -43,24 +43,31 @@ On reste globalement sur le concept amené jusqu'ici, on à rajouté le fait de 
 Globalement la partie se déroulera en relais; sur la map il y aura uniquement un 1v1 et les joueurs actuels pourront uniquement voir ce qui se passe sur la map. Sauf que les spectateurs voient en plus leur coéquipiers.
 Une fois que le 1er joueur se prend un hit il devient spectateur et c'est au second de prendre place sur la map et ainsi de suite jusqu'à ce qu'un joueur se prend 3 hit, il est alors éliminé et devient spectateur mais il ne pourra pas interagir avec ce qui se passe sur la map.
 
+---
+
 # Bilan de la réu du 09/09/24
 
-- Deux équipes
-- Les 8 persos on enlève
-- On en garde que 2 avec deux ulti qui sont donné aléatoirement
-- Les deux perso : équipe 1 = ancienne mascot, équipe 2 = nouvelle mascot askip
-- 1 pc host qui créé un serveur (comme trackmania l'année dernière)
-- Une map proto séparé en deux : un coté ancien thème MMI LAN et autre coté nouveau thème MMI LAN
-- Lors d'un hit d'un jour => reset de la map + swap des deux joueurs, soit 9 vies VS 8 vies 
+Globalement quelques faces du concept vont changer:
 
-## Objets et consommables 
-- Objets plaçable par les spectateurs (vu avec des carreaux)
+- Les 2 équipes seront: un côté ancienne mascotte et un côté nouvelle mascotte (apparement il y aura changement de mascotte par rapport à l'année dernière)
+- On enlève les 8 personnages (trop de travail visuel: animation + création du personnage de manière générale avec toute sa présentation (son univers). A la place on en garde uniquement 2 (1 pour chaque "camp").
+- Bien sûr si l'on organise un "choque des années de LAN" il n'y aura pas que les persos, il y aura aussi les DA des différentes LAN qui vont couper la map en 2 (pour vraiment ressentir cet aspect affrontement)
+- Dans la même optique, on vire les ulti qui vont avec les personnages et on en fait 2 de manière générale mais ils apparaitront aléatoirement
+- Lorsqu'un joueur prend un hit (il perd une vie sur ses 3 valable), les objets sur la map et tout ce qui a été rajouté par les joueurs se fait effacer et donc pour la rotation de joueur: elle se fera de manière aléatoire parmis les 2 spectateurs encore en jeu de l'équipe (afin d'éviter d'avoir toujours les mêmes duels)
+
+## A propos du fonctionnement technique du jeu
+- On va centraliser la session streamée sur un serveur host, les joueurs arriveront en tant que "connexion externe" (via un lien par exemple). C'est un fonctionnement qui se rapproche des sessions Trackmania de l'année dernière ou des jeu à gros flux de joueurs.
+- Dans l'idée, pendant qu'un match se fait on va offrir la possibilité aux autres équipes de créer des match privés d'entrainement pour éviter qu'ils attendent sans rien faire (dans la réalité ça va demander un bon travail en plus donc à voir si on a le temps)
+
+## Objets et consommables
+Pour rappel, les spectateurs ont la possibilité d'aider leur coéquipier qui est en train de jouer en plaçant un objet directement sur la map ou en lui faisant apparaître un "consomable" c'est à dire un objet qui n'est pas plaçable mais qui est utilisable à un instant T, c'est une utilisation éphémère par rapport aux objets plaçable qui eux restent plus longtemps. D'où cet aspect de "consommation" plutôt que d'utilisation.
+- Brainsto des objets plaçable par les spectateurs (placement de ces objets assisté d'une grille)
    - Bumper
    - Piques
    - plateforme temporaire et plateforme destructible par rapport au temps passé dessus/le nombre de sauts dessus
    - Ventilateur
    - Laser qui traverse la map horizontalement/verticalement
-- Consommable droppé par la map avec un cooldownn (non défini) et droppé par les spectateurs
+- Brainsto des consommables (soit apparu grâce au jeu étant soumis à un cooldown/soit apparu grâce aux spectateurs)
    - coup de poing
    - Trou noir
    - Champ répulsif
