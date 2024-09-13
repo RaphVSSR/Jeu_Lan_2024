@@ -30,11 +30,14 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.6.2.162",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"MMILAN_Jeu",
   "resources":[
+    {"id":{"name":"obj_server","path":"objects/obj_server/obj_server.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},
+    {"id":{"name":"scr_server","path":"scripts/scr_server/scr_server.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
