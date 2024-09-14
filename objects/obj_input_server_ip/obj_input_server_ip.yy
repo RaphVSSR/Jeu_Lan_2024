@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_server",
+  "%Name":"obj_input_server_ip",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":68,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":17,"eventType":5,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_server",
+  "name":"obj_input_server_ip",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"inputs",
+    "path":"folders/Objects/inputs.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_input_prnt",
+    "path":"objects/obj_input_prnt/obj_input_prnt.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_input_prnt",
+    "path":"sprites/spr_input_prnt/spr_input_prnt.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

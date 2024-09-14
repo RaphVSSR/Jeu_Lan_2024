@@ -1,5 +1,8 @@
 
-function sendData(ip, dsMap, buffer){
+function sendData(ip, dsMap, buffer, type){
+	
+	//On ajoute le type de message donné
+	ds_map_add(dsMap, "type", type);
 	
 	encodedData = json_encode(dsMap);
 	ds_map_destroy(dsMap); //On supprime la structure de donnée décodée pour libérer de l'espace mémoire
