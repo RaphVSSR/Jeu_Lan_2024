@@ -5,6 +5,9 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 draw_set_font(fnt_btn);
+draw_set_alpha(.5);
+
+image_alpha = .5;
 
 if state = 0 {
 	draw_set_color(c_white);

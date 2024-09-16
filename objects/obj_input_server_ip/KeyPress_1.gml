@@ -1,8 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-// Inherit the parent event
-event_inherited();
 
 //On cherche à avoir un input qui ne prend en compte uniquement les chiffres et les caractères spéciaux
 if clicked{

@@ -1,7 +1,7 @@
 
 function sendData(ip, dsMap, buffer, type){
 	
-	if ip == "Ip du serveur"{
+	if ip == "Ip du serveur" || ip == ""{
 		show_message("Aucun serveur n'est connecté, appel un Admin pour qu'il le connecte.");
 		
 	}else{
@@ -32,7 +32,7 @@ function globalVariablesInit(){
 	}
 	
 	if !variable_global_exists("serverIp"){
-	global.serverIp = "Ip du serveur"; //Variable globale Init
+		global.serverIp = "Ip du serveur"; //Variable globale Init
 	}
 	
 	if !variable_global_exists("nbHost"){
@@ -53,5 +53,17 @@ function globalVariablesInit(){
 	
 	if !variable_global_exists("hostActive"){
 		global.hostActive = false;
+	}
+	
+	if !variable_global_exists("hostsDisplayed"){
+		global.hostsDisplayed = false;
+	}
+	
+	if !variable_global_exists("hostsNeedUpdate"){
+		global.hostsNeedUpdate = false;
+	}
+	
+	if !variable_global_exists("hostsPendingDisplaying"){
+		global.hostsPendingDisplaying = false;
 	}
 }

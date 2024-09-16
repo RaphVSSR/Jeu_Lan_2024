@@ -1,0 +1,2 @@
+
+global.hostsDisplayed = false;

@@ -20,3 +20,17 @@ if global.shouldHostStop {
 	
 	sendData(global.serverIp, dataStopHost, global.playerBuffer, msgType.STOP_HOST);
 }
+
+
+if global.serverIp != "Ip du serveur"{
+	
+	if global.hostsPendingDisplaying {
+		
+		global.hostsPendingDisplaying = false;
+		var dataHostsToDisplay = ds_map_create();
+		
+		ds_map_add(dataHostsToDisplay, "hosts", noone);
+		
+		sendData(global.serverIp, dataHostsToDisplay, global.playerBuffer, msgType.GET_HOSTS);
+	}
+}

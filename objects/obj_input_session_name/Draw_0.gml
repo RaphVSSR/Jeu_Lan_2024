@@ -4,15 +4,18 @@
 // Inherit the parent event
 event_inherited();
 
+draw_set_valign(fa_middle);
+
 draw_set_color(c_white);
 
 if clicked{
 	
 	draw_set_alpha(1);
-	draw_text((sprite_width / sprite_width) + 40, sprite_height / 1.5, txtTyped);
+	draw_text(x - (sprite_width / 2.2), y, txtTyped);
 	
 }else{
-
 	draw_set_alpha(.5);
-	draw_text_color((sprite_width / sprite_width) + 40, sprite_height / 1.5, global.serverIp, c_white, c_white, c_white, c_white, .5);
+	draw_text(x - (sprite_width / 2.2), y, txtTyped);
 }
+
+draw_set_valign(fa_top);

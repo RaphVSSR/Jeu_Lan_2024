@@ -4,6 +4,4 @@
 // Inherit the parent event
 event_inherited();
 
-clicked = false;
-
 global.serverIp = txtTyped;
