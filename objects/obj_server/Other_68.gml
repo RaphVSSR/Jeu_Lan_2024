@@ -10,6 +10,34 @@ if async_load[? "size"] > 0 {
 	buffer_seek(enterBuffer, buffer_seek_start, 0);
 	var response = buffer_read(enterBuffer, buffer_string);
 	
-	//On affiche la donnée envoyée et décodée
+	var respData = json_decode(response); //On décode pour pouvoir décortiquer les données
+	
 	show_debug_message(response);
+	
+	if ds_map_find_value(respData, "type") == msgType.CREATE_HOST {
+		
+		global.nbHost = ds_map_find_value(respData, "nbHost");
+		global.nbPlayer = ds_map_find_value(respData, "nbPlayer");
+		
+		if global.nbHost != noone && global.nbPlayer != noone{ //On vérifie quand même que les valeurs ont changées
+			
+			global.hostActive = true; //On confirme que le host est actif
+		}
+	}
+	
+	if ds_map_find_value(respData, "type") == msgType.STOP_HOST {
+		
+		global.nbHost = ds_map_find_value(respData, "nbHost");
+		global.nbPlayer = ds_map_find_value(respData, "nbPlayer");
+		
+		show_debug_message("Ton numéro de host est " + string(global.nbHost));	
+		show_debug_message("Ton numéro de joueur est " + string(global.nbPlayer));
+		
+		if global.nbHost == noone && global.nbPlayer == noone{ //On vérifie toujours que les valeurs ont bien changées
+			global.hostActive = false;
+			show_debug_message("Le host est bien arreté");
+		}
+	
+	}
+	
 }
