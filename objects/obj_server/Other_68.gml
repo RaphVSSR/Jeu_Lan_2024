@@ -45,25 +45,32 @@ if async_load[? "size"] > 0 {
 		
 		var hosts = ds_map_find_value(respData, "hosts");
 		
-		show_debug_message("Dans la liste on a " + string(hosts) + " hosts.");
-		
 		if hosts != 0 {
 			
-			var nbHosts = ds_list_size(hosts);
-		
+			var nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
+			
+			show_debug_message("Le nombre de hosts actifs est " + string(nbHosts));
+			
 			//On créer tout les items de la liste à afficher (1 item = 1 host)
 			for (var i = 0; i < nbHosts; i++){
 			
-				var sessionName = ds_list_find_value(hosts, 0);
-				var nbPlayers = ds_list_size(ds_list_find_value(hosts, 1));
+				var sessionName = ds_map_find_value(ds_list_find_value(hosts, i), "name"); //On récupère la propriété "name" de l'objet Host
+				var nbPlayers = ds_list_size(ds_map_find_value(ds_list_find_value(hosts, i), "players")); //On récupère la taille du tableau de joueurs dans la propriété "players" de l'objet Host
 			
-				show_debug_message("Dans le " + i + "host, on a " + nbPlayers + " joueurs.");
+				instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {
+				
+					hostName: sessionName,
+					hostPlayers: nbPlayers
+				
+				})
 			
 				global.hostsDisplayed = true;
 				alarm[0] = fps * 5;
 				
 			}
 		}else{
+			
+			show_debug_message("Dans la liste on a " + string(hosts) + " hosts.");
 			
 			noHosts = true;
 			

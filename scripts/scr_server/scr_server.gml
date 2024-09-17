@@ -9,7 +9,8 @@ function sendData(ip, dsMap, buffer, type){
 		//On ajoute le type de message donné
 		ds_map_add(dsMap, "type", type);
 		
-		encodedData = json_encode(dsMap);
+		var encodedData = json_encode(dsMap);
+		
 		ds_map_destroy(dsMap); //On supprime la structure de donnée décodée pour libérer de l'espace mémoire
 		
 		buffer_seek(buffer, buffer_seek_start, 0);
@@ -28,7 +29,7 @@ function globalVariablesInit(){
 	
 	//Un buffer est un moyen de stockage de la donnée avant d'être envoyée
 	if !variable_global_exists("playerBuffer"){
-		global.playerBuffer = buffer_create(50, buffer_fixed, 50) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
+		global.playerBuffer = buffer_create(100, buffer_fixed, 100) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
 	}
 	
 	if !variable_global_exists("serverIp"){
