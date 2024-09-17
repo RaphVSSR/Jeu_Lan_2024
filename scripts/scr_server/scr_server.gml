@@ -36,10 +36,6 @@ function globalVariablesInit(){
 		global.serverIp = "Ip du serveur"; //Variable globale Init
 	}
 	
-	if !variable_global_exists("nbHost"){
-		global.nbHost = noone;
-	}
-	
 	if !variable_global_exists("nbPlayer"){
 		global.nbPlayer = noone;
 	}
@@ -66,5 +62,9 @@ function globalVariablesInit(){
 	
 	if !variable_global_exists("hostsPendingDisplaying"){
 		global.hostsPendingDisplaying = false;
+	}
+	
+	if !variable_global_exists("hostName"){
+		global.hostsPendingDisplaying = noone;
 	}
 }

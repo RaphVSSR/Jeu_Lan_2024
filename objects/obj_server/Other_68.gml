@@ -16,10 +16,10 @@ if async_load[? "size"] > 0 {
 	
 	if ds_map_find_value(respData, "type") == msgType.CREATE_HOST {
 		
-		global.nbHost = ds_map_find_value(respData, "nbHost");
+		global.hostName = ds_map_find_value(respData, "hostName");
 		global.nbPlayer = ds_map_find_value(respData, "nbPlayer");
 		
-		if global.nbHost != noone && global.nbPlayer != noone{ //On vérifie quand même que les valeurs ont changées
+		if global.hostName != noone && global.nbPlayer != noone{ //On vérifie quand même que les valeurs ont changées
 			
 			global.hostActive = true; //On confirme que le host est actif
 		}
@@ -27,13 +27,10 @@ if async_load[? "size"] > 0 {
 	
 	if ds_map_find_value(respData, "type") == msgType.STOP_HOST {
 		
-		global.nbHost = ds_map_find_value(respData, "nbHost");
+		global.hostName = ds_map_find_value(respData, "hostName");
 		global.nbPlayer = ds_map_find_value(respData, "nbPlayer");
 		
-		show_debug_message("Ton numéro de host est " + string(global.nbHost));	
-		show_debug_message("Ton numéro de joueur est " + string(global.nbPlayer));
-		
-		if global.nbHost == noone && global.nbPlayer == noone{ //On vérifie toujours que les valeurs ont bien changées
+		if global.hostName == noone && global.nbPlayer == noone{ //On vérifie toujours que les valeurs ont bien changées
 			global.hostActive = false;
 			show_debug_message("Le host est bien arreté");
 		}
@@ -54,12 +51,12 @@ if async_load[? "size"] > 0 {
 			//On créer tout les items de la liste à afficher (1 item = 1 host)
 			for (var i = 0; i < nbHosts; i++){
 			
-				var sessionName = ds_map_find_value(ds_list_find_value(hosts, i), "name"); //On récupère la propriété "name" de l'objet Host
+				var hostName = ds_map_find_value(ds_list_find_value(hosts, i), "name"); //On récupère la propriété "name" de l'objet Host
 				var nbPlayers = ds_list_size(ds_map_find_value(ds_list_find_value(hosts, i), "players")); //On récupère la taille du tableau de joueurs dans la propriété "players" de l'objet Host
 			
 				instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {
 				
-					hostName: sessionName,
+					hostName: hostName,
 					hostPlayers: nbPlayers
 				
 				})

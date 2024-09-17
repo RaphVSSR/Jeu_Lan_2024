@@ -15,7 +15,7 @@ if global.shouldHostStop {
 	
 	var dataStopHost = ds_map_create();
 	
-	ds_map_add(dataStopHost, "nbHost", global.nbHost);
+	ds_map_add(dataStopHost, "hostName", global.hostName);
 	ds_map_add(dataStopHost, "nbPlayer", global.nbPlayer);
 	
 	sendData(global.serverIp, dataStopHost, global.playerBuffer, msgType.STOP_HOST);

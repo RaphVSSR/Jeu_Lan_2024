@@ -1,5 +1,5 @@
 
-if global.nbHost != noone {
+if global.hostName != noone {
 	global.shouldHostStop = true;	
 }else{
 	global.shouldPlayerQuit = true;	
