@@ -13,3 +13,5 @@ enum msgType{ //Par défaut les indexes de position d'un "enum" sont de 0 à n =
 globalVariablesInit();
 
 noHosts = false;
+
+hostsDisplayed = ds_list_create();

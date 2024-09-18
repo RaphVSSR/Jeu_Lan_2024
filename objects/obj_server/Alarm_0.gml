@@ -1,6 +1,6 @@
  ///@description Récupération des hosts
 
-if room == rm_lobby && global.hostsDisplayed == false && (global.serverIp != "Ip du serveur" && global.serverIp != "") {
+if room == rm_lobby && (global.serverIp != "Ip du serveur" && global.serverIp != "") {
 		
 	global.hostsPendingDisplaying = false;
 	var dataHostsToDisplay = ds_map_create();

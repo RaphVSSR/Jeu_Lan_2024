@@ -52,10 +52,6 @@ function globalVariablesInit(){
 		global.hostActive = false;
 	}
 	
-	if !variable_global_exists("hostsDisplayed"){
-		global.hostsDisplayed = false;
-	}
-	
 	if !variable_global_exists("hostsNeedUpdate"){
 		global.hostsNeedUpdate = false;
 	}
