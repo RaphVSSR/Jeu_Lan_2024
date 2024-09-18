@@ -60,10 +60,6 @@ function globalVariablesInit(){
 		global.hostsNeedUpdate = false;
 	}
 	
-	if !variable_global_exists("hostsPendingDisplaying"){
-		global.hostsPendingDisplaying = false;
-	}
-	
 	if !variable_global_exists("hostName"){
 		global.hostsPendingDisplaying = noone;
 	}

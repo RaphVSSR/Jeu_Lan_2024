@@ -12,13 +12,4 @@ enum msgType{ //Par défaut les indexes de position d'un "enum" sont de 0 à n =
 //On vérifie si les variables globales existent déjà si on doit encore instancier l'objet.
 globalVariablesInit();
 
-if room == rm_lobby {
-	
-	if global.hostsDisplayed == false {
-		
-		global.hostsPendingDisplaying = true;
-		
-	}
-}
-
 noHosts = false;

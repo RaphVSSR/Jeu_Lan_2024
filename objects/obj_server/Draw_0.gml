@@ -1,5 +1,8 @@
 
-if global.serverIp == "Ip du serveur" || global.serverIp == "" {
+if global.serverIp == "Ip du serveur" || string_trim(global.serverIp) == "" {
+	
+	noHosts = false;
+	global.hostsDisplayed = false; //On réinitialise le fait que les hosts soient affichés puise qu'on se "déconnecte"
 	
 	draw_set_color(c_white);
 	draw_set_alpha(.5);
