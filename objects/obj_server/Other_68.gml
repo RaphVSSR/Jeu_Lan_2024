@@ -41,14 +41,11 @@ if async_load[? "size"] > 0 {
 	if ds_map_find_value(respData, "type") == msgType.GET_HOSTS {
 		
 		var hosts = ds_map_find_value(respData, "hosts");
+		var nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
 		
-		if hosts != 0 {
-			
-			var nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
-			
-			verifyHosts(hosts, nbHosts, hostsDisplayed); //On détermine si on doit créer ou supprimer
-			
-		}else{
+		verifyHosts(hosts, nbHosts, hostsDisplayed); //On détermine si on doit créer ou supprimer
+		
+		if hosts == 0 {
 			
 			show_debug_message("Dans la liste on a " + string(hosts) + " hosts.");
 			
