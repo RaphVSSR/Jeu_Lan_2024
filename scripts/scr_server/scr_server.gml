@@ -59,4 +59,80 @@ function globalVariablesInit(){
 	if !variable_global_exists("hostName"){
 		global.hostsPendingDisplaying = noone;
 	}
+	
+	if !variable_global_exists("hostSelected"){
+		global.hostSelected = noone;
+	}
+}
+
+function displayHost(i, hostName, nbPlayers, hostsRoomList){
+	
+	var dsHost = ds_map_create(); //On fait un objet par hosts
+	
+	ds_map_add(dsHost, "hostName", hostName);
+	ds_map_add(dsHost, "id", instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {	//On créer une instance du parent obj_host_item et on stocke son id
+				
+		hostName: hostName,
+		hostPlayers: nbPlayers
+				
+	}));
+	
+	ds_list_insert(hostsRoomList, i, dsHost); //On insert le host dans la liste locale au même index que celui du serveur pour faciliter les vérifications
+}
+
+function removeHost(i, hostsRoomList){
+	
+	var instanceToDel = ds_map_find_value(ds_list_find_value(hostsRoomList, i), "id");
+	
+	ds_list_delete(hostsRoomList, i);
+	
+	instance_destroy(instanceToDel, true);
+	
+}
+
+function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
+	
+	if nbHosts > ds_list_size(hostsRoomList){
+		
+		for (var i = 0; i < nbHosts; ++i) {
+		    
+			//On récupère les infos de la requête
+			var hostName = ds_map_find_value(ds_list_find_value(hostsServerList, i), "name"); //On récupère la propriété "name" de l'objet Host
+			var nbPlayers = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players")); //On récupère la taille du tableau de joueurs dans la propriété "players" de l'objet 
+			
+			//On vérifie si la liste locale est vide
+			if !ds_list_find_value(hostsRoomList, i) {
+				
+				displayHost(i, hostName, nbPlayers, hostsRoomList);
+				
+			}else{
+				
+				//Si le nom qui est dans la liste locale ne correspond pas à celui dans la requête alors on créer l'instance
+				if !(ds_map_find_value(ds_list_find_value(hostsRoomList, i), "hostName") == hostName) {
+		
+					displayHost(i, hostName, nbPlayers, hostsRoomList);
+		
+				}
+			}
+			
+		}
+		
+	}else if nbHosts < ds_list_size(hostsRoomList){
+		
+		for (var i = 0; i < ds_list_size(hostsRoomList); ++i) {
+		    
+			//On récupère les infos de la requête
+			var hostName = ds_map_find_value(ds_list_find_value(hostsServerList, i), "name"); //On récupère la propriété "name" de l'objet Host
+			var nbPlayers = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players")); //On récupère la taille du tableau de joueurs dans la propriété "players" de l'objet 
+			
+			//Si le nom qui est dans la liste locale ne correspond pas à celui dans la requête alors on enlève l'instance
+			if !(ds_map_find_value(ds_list_find_value(hostsRoomList, i), "hostName") == hostName) {
+		
+				removeHost(i, hostsRoomList);
+		
+			}
+			
+		}
+		
+	}	
 }

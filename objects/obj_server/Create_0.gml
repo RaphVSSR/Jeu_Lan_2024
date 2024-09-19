@@ -14,4 +14,6 @@ globalVariablesInit();
 
 noHosts = false;
 
+isHostDisplayed = false;
+
 hostsDisplayed = ds_list_create();

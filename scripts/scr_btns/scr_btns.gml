@@ -7,8 +7,8 @@ function activateHostBtnVerify(txtToVerify){
 	}
 }
 
-//function activateJoinBtnVerify(varToVerify){
-//	if txtToVerify != "Nom de la future session" && string_length(txtToVerify) >= 1 {
-//		return true
-//	}
-//}
+function activateJoinBtnVerify(varToVerify){
+	if varToVerify != noone {
+		return true
+	}
+}

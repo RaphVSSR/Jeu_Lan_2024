@@ -1,20 +1,25 @@
 
-if gamepad_button_check_pressed(0, gp_face1){ //check si le boutton A (xBox à été pressé)
+if room == rm_game {
 	
-	//On créer la structure du packet de données que l'on va envoyer
-	var dataPlayerStat = ds_map_create();
-	
-	ds_map_add(dataPlayerStat, "testContent", "Ping de test serveur"); //On ajoute nos données sous forme de clé/valeurs
-	
-	sendData(global.serverIp, dataPlayerStat, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+	instance_destroy(obj_host_item, true);
+	ds_list_clear(hostsDisplayed);
 }
 
-//On récupère les hosts
-if alarm[0] == -1{
-	
-	alarm[0] = fps * 5; //On envois les requêtes de récupération des hosts avec une intervalle d'envois
+if room == rm_lobby && alarm[0] == -1{
+
+	alarm[0] = fps * 5;
 	
 }
+
+//if gamepad_button_check_pressed(0, gp_face1){ //check si le boutton A (xBox à été pressé)
+	
+//	//On créer la structure du packet de données que l'on va envoyer
+//	var dataPlayerStat = ds_map_create();
+	
+//	ds_map_add(dataPlayerStat, "testContent", "Ping de test serveur"); //On ajoute nos données sous forme de clé/valeurs
+	
+//	sendData(global.serverIp, dataPlayerStat, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+//}
 
 if global.shouldHostStop {
 	
@@ -26,4 +31,15 @@ if global.shouldHostStop {
 	ds_map_add(dataStopHost, "nbPlayer", global.nbPlayer);
 	
 	sendData(global.serverIp, dataStopHost, global.playerBuffer, msgType.STOP_HOST);
+}
+
+if global.hostsPendingDisplaying == true {
+	
+	global.hostsPendingDisplaying = false; //Pour avoir un seul envois
+	
+	var data = ds_map_create();
+		
+	ds_map_add(data, "hosts", noone);
+		
+	sendData(global.serverIp, data, global.playerBuffer, msgType.GET_HOSTS);
 }

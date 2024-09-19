@@ -1,12 +1,6 @@
- ///@description Récupération des hosts
+/// @description Refresh hosts
 
-if room == rm_lobby && (global.serverIp != "Ip du serveur" && global.serverIp != "") {
-		
-	global.hostsPendingDisplaying = false;
-	var dataHostsToDisplay = ds_map_create();
-		
-	ds_map_add(dataHostsToDisplay, "hosts", noone);
-		
-	sendData(global.serverIp, dataHostsToDisplay, global.playerBuffer, msgType.GET_HOSTS);
-		
+if (global.serverIp != "Ip du serveur" && string_trim(global.serverIp) != ""){
+	
+	global.hostsPendingDisplaying = true;
 }

@@ -40,44 +40,20 @@ if async_load[? "size"] > 0 {
 	//On récupère les hosts pour les afficher pour les rejoindre
 	if ds_map_find_value(respData, "type") == msgType.GET_HOSTS {
 		
-		//On efface les données de la dernière update de hosts
-		instance_destroy(obj_host_item, true);
-		
 		var hosts = ds_map_find_value(respData, "hosts");
 		
 		if hosts != 0 {
 			
 			var nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
 			
-			show_debug_message("Le nombre de hosts actifs est " + string(nbHosts));
+			verifyHosts(hosts, nbHosts, hostsDisplayed); //On détermine si on doit créer ou supprimer
 			
-			//On créer tout les items de la liste à afficher (1 item = 1 host)
-			for (var i = 0; i < nbHosts; i++){
-				
-				//On récupère les infos de la requête
-				var hostName = ds_map_find_value(ds_list_find_value(hosts, i), "name"); //On récupère la propriété "name" de l'objet Host
-				var nbPlayers = ds_list_size(ds_map_find_value(ds_list_find_value(hosts, i), "players")); //On récupère la taille du tableau de joueurs dans la propriété "players" de l'objet 
-				
-				//On créer une instance du parent obj_host_item
-				instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {
-				
-					hostName: hostName,
-					hostPlayers: nbPlayers
-				
-				});
-			
-				global.hostsDisplayed = true;
-				alarm[0] = fps * 5;
-				
-			}
 		}else{
 			
 			show_debug_message("Dans la liste on a " + string(hosts) + " hosts.");
 			
 			noHosts = true;
-			
-			alarm[0] = fps * 5;
-			
+
 		}
 		
 		
