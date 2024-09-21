@@ -1,8 +1,8 @@
 
 //Auto kick si le host part
-if global.nbPlayer = noone{
-	room_goto(rm_lobby);
-}
+//if global.hostName == noone{
+//	room_goto(rm_lobby);
+//}
 
 //Affichage du menu de pause
 if keyboard_check_pressed(vk_escape){

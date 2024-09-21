@@ -9,7 +9,7 @@ draw_set_valign(fa_middle);
 
 draw_set_font(fnt_btn);
 
-if activateJoinBtnVerify(global.hostSelected) {
+if activateJoinBtnVerify(global.hostSelected) && (obj_input_session_and_player_name.txtTyped != "" && obj_input_session_and_player_name.txtTyped != "Pseudo en jeu"){
 	draw_set_alpha(1);
 	image_alpha = 1;
 	

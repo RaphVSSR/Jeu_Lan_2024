@@ -1,7 +1,8 @@
 
-if global.hostName != noone {
-	global.shouldHostStop = true;	
-}else{
+if global.hostName != noone && global.hostActive {
+	global.shouldHostStop = true;
+	
+}else if global.hostName != noone && !global.hostActive{
 	global.shouldPlayerQuit = true;	
 }
 

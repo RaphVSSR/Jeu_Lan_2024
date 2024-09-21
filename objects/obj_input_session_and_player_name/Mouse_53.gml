@@ -7,8 +7,10 @@ event_inherited();
 if !position_meeting(mouse_x, mouse_y, obj_input_prnt){
 	clicked = false;
 	
-	if string_trim(txtTyped) == ""{
+	if (string_trim(txtTyped) == "") && global.hostSelected == undefined {
 		txtTyped = "Nom de la future session";
+	}else if (string_trim(txtTyped) == "") && global.hostSelected != undefined {
+		txtTyped = "Pseudo en jeu";
 	}
 	
 	keyboard_string = "";

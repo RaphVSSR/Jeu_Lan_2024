@@ -5,8 +5,9 @@ enum msgType{ //Par défaut les indexes de position d'un "enum" sont de 0 à n =
 	CREATE_HOST,
 	JOIN_HOST,
 	STOP_HOST,
+	GET_HOSTS,
 	UPDATE_PLAYER_STAT,
-	GET_HOSTS
+	PLAYER_QUIT
 }
 
 //On vérifie si les variables globales existent déjà si on doit encore instancier l'objet.

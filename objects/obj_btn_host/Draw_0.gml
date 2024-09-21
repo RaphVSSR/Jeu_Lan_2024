@@ -9,7 +9,7 @@ draw_set_valign(fa_middle);
 
 draw_set_font(fnt_btn);
 
-if activateHostBtnVerify(obj_input_session_name.txtTyped) {
+if activateHostBtnVerify(obj_input_session_and_player_name.txtTyped) {
 	draw_set_alpha(1);
 	image_alpha = 1;
 	

@@ -57,4 +57,29 @@ if async_load[? "size"] > 0 {
 	
 	}
 	
+	//On récupère le retour pour confirmer que le player à bien été ajouté
+	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
+		
+		global.hostName = ds_map_find_value(respData, "hostName");
+		global.playerName = ds_map_find_value(respData, "playerName");
+		var nbPlayers = ds_map_find_value(respData, "nbPlayers");
+		
+		show_debug_message("Player ajouté au host " + string(global.hostName) + " contenant dorénavent " + string(nbPlayers) + " joueurs.")
+		
+		
+	
+	}
+	
+	//On récupère le retour pour confirmer que le player à bien été retiré
+	if ds_map_find_value(respData, "type") == msgType.PLAYER_QUIT {
+		
+		global.hostName = noone;
+		global.playerName = undefined;
+		
+		show_debug_message("Le player à bien été retiré du host.")
+		
+		
+	
+	}
+	
 }

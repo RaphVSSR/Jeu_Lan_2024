@@ -56,12 +56,20 @@ function globalVariablesInit(){
 		global.hostsNeedUpdate = false;
 	}
 	
-	if !variable_global_exists("hostName"){
+	if !variable_global_exists("hostsPendingDisplaying"){
 		global.hostsPendingDisplaying = noone;
 	}
 	
 	if !variable_global_exists("hostSelected"){
-		global.hostSelected = noone;
+		global.hostSelected = undefined;
+	}
+	
+	if !variable_global_exists("hostName"){
+		global.hostName = noone;
+	}
+	
+	if !variable_global_exists("playerName"){
+		global.playerName = undefined;
 	}
 }
 
