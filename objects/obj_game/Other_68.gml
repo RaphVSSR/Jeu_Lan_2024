@@ -8,6 +8,8 @@ if async_load[? "size"] > 0 {
 	
 	var respData = json_decode(response); //On décode pour pouvoir décortiquer les données
 	
+	show_debug_message(response);
+	
 	if ds_map_find_value(respData, "type") == msgType.CREATE_PLAYERS{
 	
 		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
@@ -18,9 +20,6 @@ if async_load[? "size"] > 0 {
 	
 	//On récupère le retour pour confirmer que le player à bien été ajouté
 	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
-		
-		global.hostName = ds_map_find_value(respData, "hostName");
-		global.playerName = ds_map_find_value(respData, "playerName");
 		
 		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
 		
