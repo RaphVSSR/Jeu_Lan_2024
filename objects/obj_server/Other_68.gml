@@ -22,6 +22,8 @@ if async_load[? "size"] > 0 {
 		if global.hostName != noone && global.nbPlayer != noone{ //On vérifie quand même que les valeurs ont changées
 			
 			global.hostActive = true; //On confirme que le host est actif
+			global.playerName = "Host Actuel";
+			
 		}
 	}
 	
@@ -52,21 +54,6 @@ if async_load[? "size"] > 0 {
 			noHosts = true;
 
 		}
-		
-		
-	
-	}
-	
-	//On récupère le retour pour confirmer que le player à bien été ajouté
-	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
-		
-		global.hostName = ds_map_find_value(respData, "hostName");
-		global.playerName = ds_map_find_value(respData, "playerName");
-		var nbPlayers = ds_map_find_value(respData, "nbPlayers");
-		
-		show_debug_message("Player ajouté au host " + string(global.hostName) + " contenant dorénavent " + string(nbPlayers) + " joueurs.")
-		
-		
 	
 	}
 	
