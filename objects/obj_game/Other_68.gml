@@ -8,7 +8,7 @@ if async_load[? "size"] > 0 {
 	
 	var respData = json_decode(response); //On décode pour pouvoir décortiquer les données
 	
-	show_debug_message(response);
+	//show_debug_message(response);
 	
 	if ds_map_find_value(respData, "type") == msgType.CREATE_PLAYERS{
 	
