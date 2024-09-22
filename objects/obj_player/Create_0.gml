@@ -1,4 +1,4 @@
 
 playerSpeed = 5;
 
-requestUpdatingSent = false;
+updateSend = 0;
