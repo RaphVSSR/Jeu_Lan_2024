@@ -12,9 +12,12 @@ function instancePlayer(player){
 		if instance_number(obj_player) == 2{
 			
 			//On le passe en spec
+			global.playerName = ds_map_find_value(player, "name");
+			
 			return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_spec, {
 		
 				name: ds_map_find_value(player, "name"),
+				teamName: ds_map_find_value(player, "teamName"),
 				x: ds_map_find_value(player, "x"),
 				y: ds_map_find_value(player, "y")
 		
@@ -26,9 +29,12 @@ function instancePlayer(player){
 			if obj_player.teamName == ds_map_find_value(player, "teamName"){
 				
 				//On le met en spec -> visible que par les specs de son équipe
+				global.playerName = ds_map_find_value(player, "name");
+
 				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_spec, {
 		
 					name: ds_map_find_value(player, "name"),
+					teamName: ds_map_find_value(player, "teamName"),
 					x: ds_map_find_value(player, "x"),
 					y: ds_map_find_value(player, "y")
 		
@@ -37,9 +43,12 @@ function instancePlayer(player){
 			}else{ //Si elle existe déjà mais qu'elle est pas de son équipe, on le créer en tant que 2e player principal
 					
 				//On le défini comme un 2e perso principal
+				global.playerName = ds_map_find_value(player, "name");
+
 				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
 		
 					name: ds_map_find_value(player, "name"),
+					teamName: ds_map_find_value(player, "teamName"),
 					x: ds_map_find_value(player, "x"),
 					y: ds_map_find_value(player, "y")
 		
@@ -51,9 +60,12 @@ function instancePlayer(player){
 		
 	}else{ //Si elle n'existe pas on l'ajoute comme perso principal
 		
+		global.playerName = ds_map_find_value(player, "name");
+		
 		return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
 		
 			name: ds_map_find_value(player, "name"),
+			teamName: ds_map_find_value(player, "teamName"),
 			x: ds_map_find_value(player, "x"),
 			y: ds_map_find_value(player, "y")
 		

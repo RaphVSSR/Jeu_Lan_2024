@@ -7,6 +7,7 @@ if !quitting { //On envois pas de positions si le player est en train de quitter
 
 		ds_map_add(data, "hostName", global.hostName);
 		ds_map_add(data, "playerName", name);
+		ds_map_add(data, "teamName", teamName);
 		ds_map_add(data, "x", x);
 		ds_map_add(data, "y", y);
 
@@ -18,6 +19,7 @@ if !quitting { //On envois pas de positions si le player est en train de quitter
 
 		ds_map_add(data, "hostName", global.hostName);
 		ds_map_add(data, "playerName", name);
+		ds_map_add(data, "teamName", teamName);
 		ds_map_add(data, "x", x);
 		ds_map_add(data, "y", y);
 
