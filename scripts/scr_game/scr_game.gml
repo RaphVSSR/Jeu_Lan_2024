@@ -1,19 +1,76 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+
 function addPlayers(players){ //On vient de récupérer la liste des players du host
 	
 	//On ajoute les nouveaux joueurs
 	for (var i = 0; i < ds_list_size(players); i++){
 	
 		var player = ds_list_find_value(players, i); //On travail au cas par cas pour les instancier
-	
-		instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
 		
-			name: ds_map_find_value(player, "name"),
-			x: ds_map_find_value(player, "x"),
-			y: ds_map_find_value(player, "y")
+		var teams = obj_game.teams;
+
+
+	//======= REFERENCEMENT DES EQUIPES ======			
 		
-		})
+		if ds_map_find_value(player, "teamName") != noone { //Noone dit en fait que le player est streamer
+			
+			//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
+			var oPlayer = ds_map_create();
+			
+			//On ajoute le nom du player à l'objet
+			ds_map_add(oPlayer, "name", ds_map_find_value(player, "name"));
+			
+			show_debug_message(json_encode(oPlayer));
+			
+			//Est-ce que son équipe est déjà référencée ?
+			for (var j = 0; j < ds_list_size(teams); j++){ //On check chaques objets/équipe de la liste équipes
+				
+				//Si y a pas de champ "name" alors aucune équipe n'est resssencée à l'emplacement j de la liste teams
+				if !ds_map_exists(ds_list_find_value(teams, j), "name") {
+					
+					//On ajoute la première équipe comme référence
+					ds_map_add(ds_list_find_value(teams, j), "name", ds_map_find_value(player, "teamName"));
+					
+					//On ajoute l'id du player à son objet
+					ds_map_add(oPlayer, "id", instancePlayer(player));
+					
+					show_debug_message(json_encode(oPlayer));
+					
+					//On ajoute le player à la liste préconfigurée
+					ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
+					
+					break; //On sort de la boucle actuelle, parce que on vient de créer l'équipe du player, on va pas aller au 2e tour de boucle sinon on créerait 2 équipes identiques
+					
+				}else{ //Si il y a un champ "name"
+					
+					//On check si l'équipe présente est égale à l'équipe du player
+					if ds_map_find_value(ds_list_find_value(teams, j), "name") == ds_map_find_value(player, "teamName"){
+					
+						//On ajoute l'id du player à son objet
+						ds_map_add(oPlayer, "id", instancePlayer(player));
+						
+						//On ajoute le player à l'équipe en question
+						ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
+						
+						break;
+						
+					}else{
+						
+						continue; //Si l'équipe ne correspond pas on va chercher le prochain tour de boucle -> vérifier le 2e emplacement d'équipe
+						
+						/*Penser à faire que si aucune équipe ne correspond, alors c'est la faute du player donc il se fait "kick" et il retourne au lobby
+						
+						PB: si c'est le 2e player qui a merdé, alors on est foutu parce que ça sera considéré comme 2e équipe et les autres players de la 2e équipe
+						se feront kick..*/
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		//Fin de la config / vérif des équipes
 	
 	}
 	
@@ -39,6 +96,7 @@ function updatePlayers(players){ //On vient de récupérer la liste des players 
 						x = ds_map_find_value(player, "x");
 						y = ds_map_find_value(player, "y");
 					}
+					
 					break; //Sort de la boucle si condition true
 				}
 		

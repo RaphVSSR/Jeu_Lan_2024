@@ -1,5 +1,7 @@
 
-if keyboard_check_pressed(vk_decimal){
+//====== Admin/debug mode ======
+
+if keyboard_check_pressed(vk_insert){
 	
 	if instance_exists(obj_debug_bar){
 		

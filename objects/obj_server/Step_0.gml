@@ -7,7 +7,7 @@ if room == rm_game {
 
 if room == rm_lobby && alarm[0] == -1{
 
-	alarm[0] = fps * 5;
+	alarm[0] = fps * 5; //Attente de récupération des hosts
 	
 }
 

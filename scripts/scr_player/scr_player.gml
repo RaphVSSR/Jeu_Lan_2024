@@ -1,5 +1,68 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+function instancePlayer(player){
+	
+//Une fois qu'on appel cette fonction, on a trouvé son équipe, on l'instancie et on retourne son id pour le rajouter à l'équipe dans la foulée
+
+//====== On commence par déterminer comment le render ======
+	
+	//Est-ce qu'au moins une instance est déjà là ?
+	if instance_exists(obj_player){
+		
+		//Si 2 instances players principaux existent déjà, alors le player passe directement en spec
+		if instance_number(obj_player) == 2{
+			
+			//On le passe en spec
+			return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_spec, {
+		
+				name: ds_map_find_value(player, "name"),
+				x: ds_map_find_value(player, "x"),
+				y: ds_map_find_value(player, "y")
+		
+			});
+			
+		}else{
+				
+			//Si une instance d'un perso principal existe déjà, si elle est de son équipe, alors on met le player en spec
+			if obj_player.teamName == ds_map_find_value(player, "teamName"){
+				
+				//On le met en spec -> visible que par les specs de son équipe
+				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_spec, {
+		
+					name: ds_map_find_value(player, "name"),
+					x: ds_map_find_value(player, "x"),
+					y: ds_map_find_value(player, "y")
+		
+				});
+				
+			}else{ //Si elle existe déjà mais qu'elle est pas de son équipe, on le créer en tant que 2e player principal
+					
+				//On le défini comme un 2e perso principal
+				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
+		
+					name: ds_map_find_value(player, "name"),
+					x: ds_map_find_value(player, "x"),
+					y: ds_map_find_value(player, "y")
+		
+				});
+					
+			}
+			
+		}
+		
+	}else{ //Si elle n'existe pas on l'ajoute comme perso principal
+		
+		return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
+		
+			name: ds_map_find_value(player, "name"),
+			x: ds_map_find_value(player, "x"),
+			y: ds_map_find_value(player, "y")
+		
+		});
+		
+	}
+	
+}
+
 function playerCollisionsInit(){
 
 	//Collision avec le bord de map

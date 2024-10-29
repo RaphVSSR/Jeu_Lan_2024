@@ -1,0 +1,18 @@
+
+====== Orga générale du projet ======
+
+Ce qui à été fait à l'heure actuelle:
+
+- Les bases du gameplay
+- Le serveur est bien avancé -> passer dessus pour check l'opti potentielle
+- En cours -> Le tri et le render / specs
+
+Ce qui est à faire (en gros):
+
+- Les objets (interactions, apparition)
+- Menu du jeu
+- Potentielle interface qui explique les touches
+- Passer les bindings clavier en manette
+
+
+====== PENSER A FAIRE UNE SESSION DE TESTS UNITAIRES ET LE TRACK D'OPTIMISATION -> objectif ne pas prendre trop de mémoire et permettre la fluidité des requêtes réseau ======

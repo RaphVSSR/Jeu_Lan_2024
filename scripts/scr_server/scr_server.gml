@@ -29,7 +29,7 @@ function globalVariablesInit(){
 	
 	//Un buffer est un moyen de stockage de la donnée avant d'être envoyée
 	if !variable_global_exists("playerBuffer"){
-		global.playerBuffer = buffer_create(100, buffer_fixed, 100) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
+		global.playerBuffer = buffer_create(200, buffer_fixed, 200) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
 	}
 	
 	if !variable_global_exists("serverIp"){
@@ -70,6 +70,10 @@ function globalVariablesInit(){
 	
 	if !variable_global_exists("playerName"){
 		global.playerName = undefined;
+	}
+	
+	if !variable_global_exists("teamName"){
+		global.teamName = undefined;
 	}
 }
 

@@ -1,28 +1,29 @@
 
-if global.hostActive {
+if !quitting { //On envois pas de positions si le player est en train de quitter
 	
-	var data = ds_map_create();
-
-	ds_map_add(data, "hostName", global.hostName);
-	ds_map_add(data, "playerName", "Host Actuel");
-	ds_map_add(data, "x", x);
-	ds_map_add(data, "y", y);
-	ds_map_add(data, "players", noone);
-
-	sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+	if global.hostActive {
 	
-}else{
+		var data = ds_map_create();
 
-	var data = ds_map_create();
+		ds_map_add(data, "hostName", global.hostName);
+		ds_map_add(data, "playerName", name);
+		ds_map_add(data, "x", x);
+		ds_map_add(data, "y", y);
 
-	ds_map_add(data, "hostName", global.hostName);
-	ds_map_add(data, "playerName", global.playerName);
-	ds_map_add(data, "x", x);
-	ds_map_add(data, "y", y);
-	ds_map_add(data, "players", noone);
-
-	sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
 	
+	}else{
+
+		var data = ds_map_create();
+
+		ds_map_add(data, "hostName", global.hostName);
+		ds_map_add(data, "playerName", name);
+		ds_map_add(data, "x", x);
+		ds_map_add(data, "y", y);
+
+		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+	
+	}
 }
 
 playerCollisionsInit();

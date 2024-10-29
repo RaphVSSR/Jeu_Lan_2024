@@ -6,4 +6,4 @@ if global.hostName != noone && global.hostActive {
 	global.shouldPlayerQuit = true;	
 }
 
-room_goto(rm_lobby);
+obj_player.quitting = true;

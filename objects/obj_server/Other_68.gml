@@ -22,7 +22,7 @@ if async_load[? "size"] > 0 {
 		if global.hostName != noone && global.nbPlayer != noone{ //On vérifie quand même que les valeurs ont changées
 			
 			global.hostActive = true; //On confirme que le host est actif
-			global.playerName = "Host Actuel";
+			global.playerName = ds_map_find_value(respData, "hostPlayerName");
 			
 		}
 	}
@@ -35,6 +35,8 @@ if async_load[? "size"] > 0 {
 		if global.hostName == noone && global.nbPlayer == noone{ //On vérifie toujours que les valeurs ont bien changées
 			global.hostActive = false;
 			show_debug_message("Le host est bien arreté");
+			
+			room_goto(rm_lobby); //Une fois la confirmation du host faite, on peut changer de scène.
 		}
 	
 	}
