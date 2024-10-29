@@ -28,7 +28,7 @@ function instancePlayer(player){
 			//Si une instance d'un perso principal existe déjà, si elle est de son équipe, alors on met le player en spec
 			if obj_player.teamName == ds_map_find_value(player, "teamName"){
 				
-				//On le met en spec -> visible que par les specs de son équipe
+				//On le met en spec
 				global.playerName = ds_map_find_value(player, "name");
 
 				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_spec, {
