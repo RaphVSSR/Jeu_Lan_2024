@@ -18,4 +18,22 @@ if keyboard_check_pressed(vk_escape){
 	}
 }
 
-//Faire que lors que 3 personnes sont présentes par équipes -> on lance la game
+switch global.visibility { //Si on est main on masque tout les specs
+	
+	case "main":
+				
+		if instance_exists(obj_spec){
+				
+			obj_spec.visible = false;
+				
+		}
+		
+		break;
+	
+	case "spec":
+	
+		//Voir que sa team
+		
+		break;
+				
+}

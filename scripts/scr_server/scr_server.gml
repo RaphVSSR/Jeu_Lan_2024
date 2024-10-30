@@ -76,8 +76,8 @@ function globalVariablesInit(){ //Faut trier les globales system, host et player
 		global.teamName = undefined;
 	}
 	
-	if !variable_global_exists("playerType"){
-		global.playerType = undefined;
+	if !variable_global_exists("visibility"){
+		global.visibility = undefined;
 	}
 }
 

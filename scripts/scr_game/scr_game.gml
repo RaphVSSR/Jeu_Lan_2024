@@ -23,11 +23,17 @@ function addPlayers(players){ //On vient de récupérer la liste des players du 
 					
 					case true:
 					
-						//On check si c'est notre équipe
+						//On check si c'est l'équipe du player
 						if ds_map_find_value(ds_list_find_value(teams, j), "name") == ds_map_find_value(player, "teamName"){
 							
 							//On passe le player en spec
-							global.playerType = "spec";
+							
+							//On vérif si c'est nous
+							if ds_map_find_value(player, "name") == global.playerName {
+							
+								global.visibility = "spec";
+							
+							}
 							
 							//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
 							var oPlayer = ds_map_create();
@@ -52,7 +58,11 @@ function addPlayers(players){ //On vient de récupérer la liste des players du 
 					case false:
 					
 						//====== On ajoute le player à l'équipe et on render un player princ ======
-						global.playerType = "main";
+						if ds_map_find_value(player, "name") == global.playerName {
+						
+							global.visibility = "main";
+						
+						}
 						
 						//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
 						var oPlayer = ds_map_create();
@@ -74,17 +84,6 @@ function addPlayers(players){ //On vient de récupérer la liste des players du 
 				}
 				
 				break;
-				
-			}
-				
-			//Si on est main on supprime tout les specs
-			if global.playerType == "main" {
-				
-				if instance_exists(obj_spec){
-				
-					instance_destroy(obj_spec, true);
-				
-				}
 				
 			}
 			
