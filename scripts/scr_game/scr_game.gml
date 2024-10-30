@@ -2,172 +2,93 @@
 
 function addPlayers(players){ //On vient de récupérer la liste des players du host
 	
-	function renderAvecSpecs(players){
-				
-		//On ajoute les nouveaux joueurs
-		for (var i = 0; i < ds_list_size(players); i++){
+	/* On pointe l'équipe qui correspond à celle du player*/
+	//Dans un tableau d'équipe -> pas de clé "name" == personne dedans
 	
-			var player = ds_list_find_value(players, i); //On travail au cas par cas pour les instancier
+	for (var i = 0; i < ds_list_size(players); i++){
 		
+		var player = ds_list_find_value(players, i); //On travail au cas par cas pour les instancier
+		
+		//On écarte les streamers
+		if ds_map_find_value(player, "teamName") != noone { //Noone dit en fait que le player est streamer
+			
+			//On récupère les équipes set dans game pour voir leur contenu
 			var teams = obj_game.teams;
-
-
-		//======= REFERENCEMENT DES EQUIPES ======			
-		
-			if ds_map_find_value(player, "teamName") != noone { //Noone dit en fait que le player est streamer
 			
-				//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
-				var oPlayer = ds_map_create();
-			
-				//On ajoute le nom du player à l'objet
-				ds_map_add(oPlayer, "name", ds_map_find_value(player, "name"));
-			
-				show_debug_message(json_encode(oPlayer));
-			
-				//Est-ce que son équipe est déjà référencée ?
-				for (var j = 0; j < ds_list_size(teams); j++){ //On check chaques objets/équipe de la liste équipes
+			//On pointe l'équipe dans laquelle le player se déclare
+			for (var j = 0; j < ds_list_size(teams); j++){
 				
-					//Si y a pas de champ "name" alors aucune équipe n'est resssencée à l'emplacement j de la liste teams
-					if !ds_map_exists(ds_list_find_value(teams, j), "name") {
+				//Est-ce que clé "name" ?
+				switch ds_map_exists(ds_list_find_value(teams, j), "name"){
 					
-						//On ajoute la première équipe comme référence
+					case true:
+					
+						//On check si c'est notre équipe
+						if ds_map_find_value(ds_list_find_value(teams, j), "name") == ds_map_find_value(player, "teamName"){
+							
+							//On passe le player en spec
+							global.playerType = "spec";
+							
+							//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
+							var oPlayer = ds_map_create();
+						
+							//On ajoute le nom du player à l'objet
+							ds_map_add(oPlayer, "name", ds_map_find_value(player, "name"));
+					
+							//On ajoute l'id du player à son objet
+							ds_map_add(oPlayer, "id", instancePlayer(player));
+					
+							//On ajoute le player à la liste de l'équipe
+							ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
+							
+						}else{
+						
+							continue;
+							
+						}
+					
+						break;
+						
+					case false:
+					
+						//====== On ajoute le player à l'équipe et on render un player princ ======
+						global.playerType = "main";
+						
+						//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
+						var oPlayer = ds_map_create();
+						
+						//On ajoute le nom du player à l'objet
+						ds_map_add(oPlayer, "name", ds_map_find_value(player, "name"));
+						
+						//On config l'équipe
 						ds_map_add(ds_list_find_value(teams, j), "name", ds_map_find_value(player, "teamName"));
 					
 						//On ajoute l'id du player à son objet
 						ds_map_add(oPlayer, "id", instancePlayer(player));
 					
-						show_debug_message(json_encode(oPlayer));
-					
-						//On ajoute le player à la liste préconfigurée
+						//On ajoute le player à la liste de l'équipe
 						ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
 					
-						break; //On sort de la boucle actuelle, parce que on vient de créer l'équipe du player, on va pas aller au 2e tour de boucle sinon on créerait 2 équipes identiques
-					
-					}else{ //Si il y a un champ "name"
-					
-						//On check si l'équipe présente est égale à l'équipe du player
-						if ds_map_find_value(ds_list_find_value(teams, j), "name") == ds_map_find_value(player, "teamName"){
-					
-							//On ajoute l'id du player à son objet
-							ds_map_add(oPlayer, "id", instancePlayer(player));
+						break;
 						
-							//On ajoute le player à l'équipe en question
-							ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
-						
-							break;
-						
-						}
-						
-						//Si l'équipe ne correspond pas on va chercher le prochain tour de boucle -> vérifier le 2e emplacement d'équipe
-						
-						/*Penser à faire que si aucune équipe ne correspond, alors c'est la faute du player donc il se fait "kick" et il retourne au lobby
-						
-						PB: si c'est le 2e player qui a merdé, alors on est foutu parce que ça sera considéré comme 2e équipe et les autres players de la 2e équipe
-						se feront kick..*/
-								
-					
-					}
+				}
+				
+				break;
+				
+			}
+				
+			//Si on est main on supprime tout les specs
+			if global.playerType == "main" {
+				
+				if instance_exists(obj_spec){
+				
+					instance_destroy(obj_spec, true);
 				
 				}
-			
-			}
-			//Fin de la config / vérif des équipes
-	
-		}
-		
-	}
-	
-	function renderSansSpecs(players){
-		
-		//Il faut qu'on s'arrête quand les 2 persos principaux sont render et que les specs on les fait pas
-		//On affiche tout les persos principaux actuels
-		for (var i = 0; i < instance_number(obj_player); i++){
-		
-			var player = ds_list_find_value(players, i); //On travail au cas par cas pour les instancier
-		
-			var teams = obj_game.teams;
-
-
-		//======= REFERENCEMENT DES EQUIPES ======			
-		
-			if ds_map_find_value(player, "teamName") != noone { //Noone dit en fait que le player est streamer
-			
-				//On créer un nouvel objet pour associer nom du joueur avec son numéro d'instance => le retrouver et l'isoler plus facilement
-				var oPlayer = ds_map_create();
-			
-				//On ajoute le nom du player à l'objet
-				ds_map_add(oPlayer, "name", ds_map_find_value(player, "name"));
-			
-				show_debug_message(json_encode(oPlayer));
-			
-				//Est-ce que son équipe est déjà référencée ?
-				for (var j = 0; j < ds_list_size(teams); j++){ //On check chaques objets/équipe de la liste équipes
 				
-					//Si y a pas de champ "name" alors aucune équipe n'est resssencée à l'emplacement j de la liste teams
-					if !ds_map_exists(ds_list_find_value(teams, j), "name") {
-					
-						//On ajoute la première équipe comme référence
-						ds_map_add(ds_list_find_value(teams, j), "name", ds_map_find_value(player, "teamName"));
-					
-						//On ajoute l'id du player à son objet
-						ds_map_add(oPlayer, "id", instancePlayer(player));
-					
-						show_debug_message(json_encode(oPlayer));
-					
-						//On ajoute le player à la liste préconfigurée
-						ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
-					
-						break; //On sort de la boucle actuelle, parce que on vient de créer l'équipe du player, on va pas aller au 2e tour de boucle sinon on créerait 2 équipes identiques
-					
-					}else{ //Si il y a un champ "name"
-					
-						//On check si l'équipe présente est égale à l'équipe du player
-						if ds_map_find_value(ds_list_find_value(teams, j), "name") == ds_map_find_value(player, "teamName"){
-					
-							//On ajoute l'id du player à son objet
-							ds_map_add(oPlayer, "id", instancePlayer(player));
-						
-							//On ajoute le player à l'équipe en question
-							ds_list_add(ds_map_find_value(ds_list_find_value(teams, j), "players"), oPlayer);
-						
-							break;
-						
-						}
-						
-						//Si l'équipe ne correspond pas on va chercher le prochain tour de boucle -> vérifier le 2e emplacement d'équipe
-						
-						/*Penser à faire que si aucune équipe ne correspond, alors c'est la faute du player donc il se fait "kick" et il retourne au lobby
-						
-						PB: si c'est le 2e player qui a merdé, alors on est foutu parce que ça sera considéré comme 2e équipe et les autres players de la 2e équipe
-						se feront kick..*/
-								
-					
-					}
-				
-				}
-			
 			}
-			//Fin de la config / vérif des équipes
 			
 		}
-		
-	}
-	
-	
-	//On vérifie si on a déjà un player principal de présent
-	switch (instance_number(obj_player)){
-	
-		case 0 || 1: //Le player est un player princ -> il doit voir les players princs et pas les specs
-			
-			renderSansSpecs(players);
-			
-			break;
-		
-		default: //Au bout de 2 players princs, on passe le reste en specs mais ils doivent voir les players principales
-		
-			renderAvecSpecs(players);
-		
-			break;
 		
 	}
 	

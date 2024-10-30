@@ -20,7 +20,7 @@ function sendData(ip, dsMap, buffer, type){
 	
 }
 
-function globalVariablesInit(){
+function globalVariablesInit(){ //Faut trier les globales system, host et player
 	
 	// Création de notre liaison entre le client et le serveur
 	if !variable_global_exists("client"){
@@ -74,6 +74,10 @@ function globalVariablesInit(){
 	
 	if !variable_global_exists("teamName"){
 		global.teamName = undefined;
+	}
+	
+	if !variable_global_exists("playerType"){
+		global.playerType = undefined;
 	}
 }
 
