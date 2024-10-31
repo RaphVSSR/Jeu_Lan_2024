@@ -5,7 +5,9 @@ Ce qui à été fait à l'heure actuelle:
 
 - Les bases du gameplay
 - Le serveur est bien avancé -> passer dessus pour check l'opti potentielle
-- En cours -> Le tri et le render / specs
+- Le tri / équipes + visibilité spectateurs
+- En cours -> mettre à jour l'update des stats des players
+- En cours -> l'implémentation des objets
 
 Ce qui est à faire (en gros):
 

@@ -18,7 +18,10 @@
     "name":"char",
     "path":"folders/Objects/char.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_players_prnt",
+    "path":"objects/obj_players_prnt/obj_players_prnt.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

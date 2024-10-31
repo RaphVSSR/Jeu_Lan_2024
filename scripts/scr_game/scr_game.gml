@@ -103,20 +103,17 @@ function updatePlayers(players){ //On vient de récupérer la liste des players 
 		//On ne veut pas que notre instance se mette à jour avec les stats du serveur pour économiser des calculs
 		if ds_map_find_value(player, "name") != global.playerName{
 		
-			//On parcours tout les objets players pour les identifier
-			for (var j = 0; j < instance_number(obj_player); j++){ //On construit un espèce de foreach
+			//On parcours touts les players présents dans la room en les ayant répertoriés par avance dans un parent
+			with obj_players_prnt {
 				
-				if instance_find(obj_player, j).name == ds_map_find_value(player, "name"){
+				if name == ds_map_find_value(player, "name") {
 				
-					with(instance_find(obj_player, j)){ //Sur chaque instances on change ses stats
+					x = ds_map_find_value(player, "x");
+					y = ds_map_find_value(player, "y");
 				
-						x = ds_map_find_value(player, "x");
-						y = ds_map_find_value(player, "y");
-					}
-					
-					break; //Sort de la boucle si condition true
+					break; //On économise des calculs en arrétant de parcourir les entités dès qu'on a trouvé celle qui correspond
 				}
-		
+				
 			}
 			
 		}else{

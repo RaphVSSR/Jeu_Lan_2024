@@ -2,12 +2,8 @@
 
 function hostDisplaying(){
 	
-	//On vire l'input de nom de teams
-	if instance_exists(obj_input_team_name) {
-	
-		instance_destroy(obj_input_team_name, true);
-	
-	}
+	/*On veut que si l'équipe pour le host est remplie -> il peut que hoster sans streamer
+	Sinon il peut streamer mais que si il a pas affecté d'équipes*/
 	
 	if instance_exists(obj_btn_join){
 	
@@ -20,27 +16,30 @@ function hostDisplaying(){
 	
 	}
 	
-	//On défini la limitte de caractères à 24 pour le nom de session
+	//On défini la limite de caractères à 24 pour le nom de session
 	obj_input_session_and_player_name.limitChar = 24;
-
-	if obj_input_session_and_player_name.txtTyped != "Nom de la future session" && string_length(obj_input_session_and_player_name.txtTyped) >= 1 {
 	
+	//Si l'équipe est remplie
+	if (obj_input_team_name.txtTyped != "Nom de l'équipe" && string_length(obj_input_team_name.txtTyped) >= 1) && (obj_input_session_and_player_name.txtTyped != "Nom de la future session" && string_length(obj_input_session_and_player_name.txtTyped) >= 1) {
+	
+		obj_btn_streamer.activated = false;
 		obj_btn_host.activated = true;
+	
+	}else if (obj_input_session_and_player_name.txtTyped != "Nom de la future session" && string_length(obj_input_session_and_player_name.txtTyped) >= 1) && (obj_input_team_name.txtTyped == "Nom de l'équipe") {
+	
+		obj_btn_host.activated = false;
 		obj_btn_streamer.activated = true;
 			
 	}else{
 		
-		obj_btn_host.activated = false;
 		obj_btn_streamer.activated = false;
+		obj_btn_host.activated = false;
 		
 	}
 
 }
 
 function playerDisplaying(){
-	
-	//On fait apparaitre l'input des équipes
-	instance_create_depth(obj_input_session_and_player_name.x, (obj_input_session_and_player_name.y - obj_input_session_and_player_name.sprite_height) - 10, 0, obj_input_team_name);
 	
 	if instance_exists(obj_btn_streamer){
 		

@@ -5,6 +5,7 @@ if activated {
 	ds_map_add(data, "hostName", obj_input_session_and_player_name.txtTyped);
 	ds_map_add(data, "hostPlayerName", "Test Host Name");
 	ds_map_add(data, "nbPlayer", noone);
+	ds_map_add(data, "teamName", obj_input_team_name.txtTyped);
 	ds_map_add(data, "streamer", false);
 
 	sendData(global.serverIp, data, global.playerBuffer, msgType.CREATE_HOST); //On envoi les données
