@@ -37,3 +37,14 @@ switch global.visibility { //Si on est main on masque tout les specs
 		break;
 				
 }
+
+//On récup les autres players ici plutôt que dans l'objet player ou spec
+if hostState == "streamer" {
+	
+	var data = ds_map_create();
+	
+	ds_map_add(data, "hostName", global.hostName);
+	
+	sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+	
+}

@@ -1,6 +1,24 @@
 
 if global.hostActive {
 	
+	hostState = undefined;
+	
+	with obj_players_prnt {
+		
+		//S'assurer que personne ne prend le pseudo du host non plus !!
+		if name == global.hostName {
+			
+			hostState = "player";
+			
+			break;
+			
+		}
+		
+	}
+	
+	//Si on sort de la boucle et que le hostState n'a toujours pas changé alors le host n'est pas un joueur
+	hostState = "streamer";
+	
 	//On ajoute les joueurs
 	var data = ds_map_create();
 	

@@ -1,29 +1,14 @@
 
 if !quitting { //On envois pas de positions si le player est en train de quitter
-	
-	if global.hostActive {
-	
-		var data = ds_map_create();
 
-		ds_map_add(data, "hostName", global.hostName);
-		ds_map_add(data, "playerName", name);
-		ds_map_add(data, "x", x);
-		ds_map_add(data, "y", y);
+	var data = ds_map_create();
 
-		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
-	
-	}else{
+	ds_map_add(data, "hostName", global.hostName);
+	ds_map_add(data, "playerName", name);
+	ds_map_add(data, "x", x);
+	ds_map_add(data, "y", y);
 
-		var data = ds_map_create();
-
-		ds_map_add(data, "hostName", global.hostName);
-		ds_map_add(data, "playerName", name);
-		ds_map_add(data, "x", x);
-		ds_map_add(data, "y", y);
-
-		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
-	
-	}
+	sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
 }
 
 if name == global.playerName {
