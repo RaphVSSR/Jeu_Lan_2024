@@ -1,5 +1,5 @@
 
-if global.serverIp != "Ip du serveur" && global.serverIp != "" {
+if global.serverIp != "Ip du serveur" && global.serverIp != "" && !global.hostActive{
 
 	if global.hostSelected != undefined && !clicked && txtTyped == "Nom de la future session"{
 	

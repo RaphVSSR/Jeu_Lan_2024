@@ -1,5 +1,9 @@
 
-image_index = 1;
+if global.hostSelected == undefined && !global.hostActive {
+	
+	image_index = 1;
 
-global.hostSelected = hostName;
-global.hostName = hostName;
+	global.hostSelected = name;
+	global.hostName = name;
+	
+}

@@ -1,19 +1,15 @@
 
 
-function hostDisplaying(){
+function btnHostDisplaying(){
 	
 	/*On veut que si l'équipe pour le host est remplie -> il peut que hoster sans streamer
 	Sinon il peut streamer mais que si il a pas affecté d'équipes*/
 	
-	if instance_exists(obj_btn_join){
-	
-		//On affecte du code au boutton join pour le changer en boutton streamer
-		with obj_btn_join {
+	//On affecte du code au boutton join pour le changer en boutton streamer
+	with obj_btn_join {
 			
-			instance_change(obj_btn_streamer, true);	
+		instance_change(obj_btn_streamer, true);	
 			
-		}
-	
 	}
 	
 	//On défini la limite de caractères à 24 pour le nom de session
@@ -39,7 +35,7 @@ function hostDisplaying(){
 
 }
 
-function playerDisplaying(){
+function btnPlayerDisplaying(){
 	
 	if instance_exists(obj_btn_streamer){
 		

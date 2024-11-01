@@ -111,7 +111,7 @@ function updatePlayers(players){ //On vient de récupérer la liste des players 
 					x = ds_map_find_value(player, "x");
 					y = ds_map_find_value(player, "y");
 				
-					break; //On économise des calculs en arrétant de parcourir les entités dès qu'on a trouvé celle qui correspond
+					break; //On économise des calculs en arrétant de parcourir les entités dès qu'on a trouvé celle qui correspond 
 				}
 				
 			}

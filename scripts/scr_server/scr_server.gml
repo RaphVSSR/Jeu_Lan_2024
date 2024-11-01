@@ -40,14 +40,6 @@ function globalVariablesInit(){ //Faut trier les globales system, host et player
 		global.nbPlayer = noone;
 	}
 	
-	if !variable_global_exists("shouldPlayerQuit"){
-		global.shouldPlayerQuit = false;
-	}
-	
-	if !variable_global_exists("shouldHostStop"){
-		global.shouldHostStop = false;
-	}
-	
 	if !variable_global_exists("hostActive"){
 		global.hostActive = false;
 	}
@@ -86,12 +78,19 @@ function displayHost(i, hostName, nbPlayers, hostsRoomList){
 	var dsHost = ds_map_create(); //On fait un objet par hosts
 	
 	ds_map_add(dsHost, "hostName", hostName);
-	ds_map_add(dsHost, "id", instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {	//On créer une instance du parent obj_host_item et on stocke son id
-				
-		hostName: hostName,
-		hostPlayers: nbPlayers
-				
-	}));
+	ds_map_add(dsHost, "id", instance_create_depth(80, 100 + (130 * i), 0, obj_host_item)); //On créer une instance du parent obj_host_item et on stocke son id
+	
+	with ds_map_find_value(dsHost, "id") {
+	
+		name = hostName;
+		
+		if nbPlayers != 0 {
+			
+			players = nbPlayers;	
+			
+		}
+		
+	}
 	
 	ds_list_insert(hostsRoomList, i, dsHost); //On insert le host dans la liste locale au même index que celui du serveur pour faciliter les vérifications
 }
@@ -113,7 +112,33 @@ function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 		instance_destroy(obj_host_item, true);
 		
 	}else{
+		
+		//Avant d'ajouter ou de supprimer, on va mettre à jour les infos de ceux qui sont déjà affichés
+		for (var i = 0; i < nbHosts; i++){
+			
+			var modified = false;
+			
+			with obj_host_item {
+				
+				if ds_map_find_value(ds_list_find_value(hostsServerList, i), "name") == name {
+					
+					players = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players"));
+					
+					modified = true;
+					
+					break;
+					
+				}
+			}
+			
+			if modified {
+				
+				break;	
+				
+			}
+		}
 	
+		//Maintenant on s'occupe des autres
 		if nbHosts > ds_list_size(hostsRoomList){
 		
 			for (var i = 0; i < nbHosts; ++i) {
@@ -166,4 +191,23 @@ function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 		
 		}
 	}
+}
+
+function hostStop() {
+	
+	var data = ds_map_create();
+	
+	ds_map_add(data, "hostName", global.hostName);
+	
+	sendData(global.serverIp, data, global.playerBuffer, msgType.STOP_HOST);
+}
+
+function playerQuit() {
+	
+	var data = ds_map_create();
+	
+	ds_map_add(data, "hostName", global.hostName);
+	ds_map_add(data, "playerName", global.playerName);
+
+	sendData(global.serverIp, data, global.playerBuffer, msgType.PLAYER_QUIT);
 }

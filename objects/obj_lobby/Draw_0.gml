@@ -1,7 +1,5 @@
 
 if global.serverIp == "Ip du serveur" || string_trim(global.serverIp) == "" {
-	
-	noHosts = false;
 		
 	draw_set_color(c_white);
 	draw_set_alpha(.5);
@@ -15,7 +13,7 @@ if global.serverIp == "Ip du serveur" || string_trim(global.serverIp) == "" {
 	
 	draw_set_valign(fa_top);
 	
-}else if noHosts {
+}else if obj_server.noHosts {
 	
 	draw_set_color(c_white);
 	draw_set_alpha(.5);

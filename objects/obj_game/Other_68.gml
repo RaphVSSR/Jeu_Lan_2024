@@ -17,15 +17,6 @@ if async_load[? "size"] > 0 {
 		addPlayers(players);
 	
 	}
-	
-	//On récupère le retour pour confirmer que le player à bien été ajouté
-	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
-		
-		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
-		
-		addPlayers(players);
-
-	}
 
 	if ds_map_find_value(respData, "type") == msgType.UPDATE_PLAYER_STAT{
 	

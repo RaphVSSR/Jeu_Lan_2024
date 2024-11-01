@@ -14,7 +14,7 @@ enum msgType{ //Par défaut les indexes de position d'un "enum" sont de 0 à n =
 //On vérifie si les variables globales existent déjà si on doit encore instancier l'objet.
 globalVariablesInit();
 
-noHosts = false;
+noHosts = undefined;
 
 isHostDisplayed = false;
 

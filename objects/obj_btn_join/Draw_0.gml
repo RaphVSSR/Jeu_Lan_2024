@@ -10,6 +10,7 @@ draw_set_valign(fa_middle);
 draw_set_font(fnt_btn);
 
 if activated {
+	
 	draw_set_alpha(1);
 	image_alpha = 1;
 	

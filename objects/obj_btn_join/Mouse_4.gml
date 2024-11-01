@@ -12,7 +12,5 @@ if activated {
 
 	//Ajouter un player au host sélectionné + attribuer un nbPlayer au nouveau joueur
 	sendData(global.serverIp, data, global.playerBuffer, msgType.JOIN_HOST); //On envoi les données
-
-	room_goto(rm_game);
 	
 }

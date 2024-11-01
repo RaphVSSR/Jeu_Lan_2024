@@ -29,15 +29,12 @@ if async_load[? "size"] > 0 {
 	
 	if ds_map_find_value(respData, "type") == msgType.STOP_HOST {
 		
-		global.hostName = ds_map_find_value(respData, "hostName");
-		global.nbPlayer = ds_map_find_value(respData, "nbPlayer");
-		
-		if global.hostName == noone && global.nbPlayer == noone{ //On vérifie toujours que les valeurs ont bien changées
-			global.hostActive = false;
-			show_debug_message("Le host est bien arreté");
-			
-			room_goto(rm_lobby); //Une fois la confirmation du host faite, on peut changer de scène.
-		}
+		global.hostName = noone;
+		global.nbPlayer = noone;
+
+		global.hostActive = false;
+		global.playerName = undefined;
+		show_debug_message("Le host est bien arreté");
 	
 	}
 	
@@ -51,12 +48,37 @@ if async_load[? "size"] > 0 {
 		
 		if hosts == 0 {
 			
-			show_debug_message("Dans la liste on a " + string(hosts) + " hosts.");
-			
 			noHosts = true;
 
+		}else{
+		
+			noHosts = false;
+		
 		}
 	
+	}
+	
+	//On récupère le retour pour confirmer que le player à bien été ajouté
+	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
+		
+		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
+		
+		for (var i = 0; i < ds_list_size(players); i++){
+		
+			var player = ds_list_find_value(players, i);
+		
+			if ds_map_find_value(player, "name") == global.playerName {
+				
+				//On affiche le boutton d'attente
+				instance_destroy(obj_btn_host, true);
+				instance_destroy(obj_btn_join, true);
+				
+				instance_create_depth(obj_input_session_and_player_name.x, obj_input_session_and_player_name.y + 100, -5, obj_btn_joining);
+				
+			}
+			
+		}
+
 	}
 	
 	//On récupère le retour pour confirmer que le player à bien été retiré
