@@ -114,27 +114,30 @@ function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 	}else{
 		
 		//Avant d'ajouter ou de supprimer, on va mettre à jour les infos de ceux qui sont déjà affichés
-		for (var i = 0; i < nbHosts; i++){
+		if instance_exists(obj_host_item){
 			
-			var modified = false;
+			for (var i = 0; i < nbHosts; i++){
 			
-			with obj_host_item {
+				var modified = false;
+			
+				with obj_host_item {
 				
-				if ds_map_find_value(ds_list_find_value(hostsServerList, i), "name") == name {
+					if ds_map_find_value(ds_list_find_value(hostsServerList, i), "name") == name {
 					
-					players = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players"));
+						players = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players"));
 					
-					modified = true;
+						modified = true;
 					
-					break;
+						break;
 					
+					}
 				}
-			}
 			
-			if modified {
+				if modified {
 				
-				break;	
+					break;	
 				
+				}
 			}
 		}
 	

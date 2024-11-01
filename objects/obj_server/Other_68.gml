@@ -61,22 +61,32 @@ if async_load[? "size"] > 0 {
 	//On récupère le retour pour confirmer que le player à bien été ajouté
 	if ds_map_find_value(respData, "type") == msgType.JOIN_HOST {
 		
-		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
-		
-		for (var i = 0; i < ds_list_size(players); i++){
-		
-			var player = ds_list_find_value(players, i);
-		
-			if ds_map_find_value(player, "name") == global.playerName {
-				
-				//On affiche le boutton d'attente
-				instance_destroy(obj_btn_host, true);
-				instance_destroy(obj_btn_join, true);
-				
-				instance_create_depth(obj_input_session_and_player_name.x, obj_input_session_and_player_name.y + 100, -5, obj_btn_joining);
-				
-			}
+		if ds_map_find_value(respData, "playerName") == "Taken"{
 			
+			global.playerName = undefined;
+			global.teamName = undefined;
+			
+			show_message("Ce pseudo est déjà pris..");
+			
+		}else{
+			
+			var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
+		
+			for (var i = 0; i < ds_list_size(players); i++){
+		
+				var player = ds_list_find_value(players, i);
+		
+				if ds_map_find_value(player, "name") == global.playerName {
+				
+					//On affiche le boutton d'attente
+					instance_destroy(obj_btn_host, true);
+					instance_destroy(obj_btn_join, true);
+				
+					instance_create_depth(obj_input_session_and_player_name.x, obj_input_session_and_player_name.y + 100, -5, obj_btn_joining);
+				
+				}
+			
+			}
 		}
 
 	}

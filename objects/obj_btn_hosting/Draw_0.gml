@@ -14,8 +14,19 @@ draw_set_alpha(1);
 image_alpha = 1;
 
 draw_set_color(c_white);
-draw_text(x, y, text);
 
+if obj_lobby.starting != 6 && global.hostActive && image_index == 0 {
+	
+	image_index = 0;
+	
+	text = "Début de la partie dans " + string(obj_lobby.starting) + "..";
+	draw_text(x, y, text);
+	
+}else{
+	
+	draw_text(x, y, text);
+	
+}
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
