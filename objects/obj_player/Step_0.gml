@@ -1,27 +1,13 @@
 
-if !quitting { //On envois pas de positions si le player est en train de quitter
+if !quitting && alarm[0] == -1 { //On envois pas de positions si le player est en train de quitter
 
-	var data = ds_map_create();
-
-	ds_map_add(data, "hostName", global.hostName);
-	ds_map_add(data, "playerName", name);
-	ds_map_add(data, "x", x);
-	ds_map_add(data, "y", y);
-
-	sendData(global.serverIp, data, global.playerBuffer, msgType.SEND_PLAYER_STAT);
+	alarm[0] = 5;
+	
 }
 
 if name == global.playerName {
 
-	localPlayer = true;
-	
-}
-
-playerCollisionsInit();
-
-//On fait la somme des angles pour les déplacements
-if localPlayer {
-	
+	//On fait la somme des angles pour les déplacements
 	if keyboard_check(vk_up) && keyboard_check(vk_left){
 
 		image_angle = 90 + 45;
@@ -46,4 +32,7 @@ if localPlayer {
 		grabObject(objectGrabed);
 	
 	}
+	
 }
+
+playerCollisionsInit();

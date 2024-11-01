@@ -39,8 +39,8 @@ switch global.visibility { //Si on est main on masque tout les specs
 }
 
 //On récup les autres players ici parce que le host n'est pas un player
-var data = ds_map_create();
+if alarm[0] == -1 {
 	
-ds_map_add(data, "hostName", global.hostName);
+	alarm[0] = 5;	
 	
-sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+}
