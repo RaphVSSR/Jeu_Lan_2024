@@ -6,6 +6,7 @@ enum msgType{ //Par défaut les indexes de position d'un "enum" sont de 0 à n =
 	JOIN_HOST,
 	STOP_HOST,
 	GET_HOSTS,
+	SEND_PLAYER_STAT,
 	UPDATE_PLAYER_STAT,
 	PLAYER_QUIT,
 	CREATE_PLAYERS

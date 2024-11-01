@@ -8,7 +8,7 @@ if !quitting { //On envois pas de positions si le player est en train de quitter
 	ds_map_add(data, "x", x);
 	ds_map_add(data, "y", y);
 
-	sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+	sendData(global.serverIp, data, global.playerBuffer, msgType.SEND_PLAYER_STAT);
 }
 
 if name == global.playerName {
