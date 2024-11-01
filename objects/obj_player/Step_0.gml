@@ -1,5 +1,5 @@
 
-if !quitting { //On envois pas de positions si le player est en train de quitter
+if !quitting && alarm[0] == -1{ //On envois pas de positions si le player est en train de quitter
 
 	alarm[0] = 10;
 }

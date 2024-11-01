@@ -37,10 +37,3 @@ switch global.visibility { //Si on est main on masque tout les specs
 		break;
 				
 }
-
-//On récup les autres players ici parce que le host n'est pas un player
-if alarm[0] == -1 {
-	
-	alarm[0] = 5;	
-	
-}

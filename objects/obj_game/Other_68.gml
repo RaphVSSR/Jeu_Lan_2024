@@ -15,6 +15,9 @@ if async_load[? "size"] > 0 {
 		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
 		
 		addPlayers(players);
+		
+		//On envois les premières requêtes d'update une fois que les instances ont été créées
+		alarm[0] = 5;
 	
 	}
 
@@ -23,6 +26,12 @@ if async_load[? "size"] > 0 {
 		var players = ds_map_find_value(respData, "players"); //On récupère la ds_list de players du host
 		
 		updatePlayers(players);
+		
+		if alarm[0] == -1 {
+			
+			alarm[0] = 5;	
+			
+		}
 	
 	}
 
