@@ -1,15 +1,7 @@
 
-if !quitting { //On envois pas de positions si le player est en train de quitter
+if !quitting && alarm[0] == -1{ //On envois pas de positions si le player est en train de quitter
 
-	var data = ds_map_create();
-
-	ds_map_add(data, "hostName", global.hostName);
-	ds_map_add(data, "playerName", name);
-	ds_map_add(data, "x", x);
-	ds_map_add(data, "y", y);
-
-	sendData(global.serverIp, data, global.playerBuffer, msgType.SEND_PLAYER_STAT);
-	
+	alarm[0] = 5;
 }
 
 if name == global.playerName {
