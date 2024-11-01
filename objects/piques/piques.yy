@@ -28,9 +28,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite9",
-    "path":"sprites/Sprite9/Sprite9.yy",
+    "name":"Sprite10",
+    "path":"sprites/Sprite10/Sprite10.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_player",
+    "path":"sprites/spr_player/spr_player.yy",
+  },
   "visible":true,
 }

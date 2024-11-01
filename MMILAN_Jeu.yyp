@@ -93,6 +93,7 @@
     {"id":{"name":"spr_pause_menu","path":"sprites/spr_pause_menu/spr_pause_menu.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_spec","path":"sprites/spr_spec/spr_spec.yy",},},
+    {"id":{"name":"Sprite10","path":"sprites/Sprite10/Sprite10.yy",},},
     {"id":{"name":"Sprite9","path":"sprites/Sprite9/Sprite9.yy",},},
   ],
   "resourceType":"GMProject",

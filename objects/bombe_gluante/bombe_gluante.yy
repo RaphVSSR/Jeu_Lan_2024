@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"bombe_gluante",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":37,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"bombe_gluante",
   "overriddenProperties":[],
@@ -26,7 +28,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"Sprite9",
     "path":"sprites/Sprite9/Sprite9.yy",
