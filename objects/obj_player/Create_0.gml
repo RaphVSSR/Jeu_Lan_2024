@@ -11,7 +11,3 @@ objectGrabed = noone;
 quitting = false;
 
 localPlayer = false;
-
-//====== Old positions ======
-oldX = undefined;
-oldY = undefined;

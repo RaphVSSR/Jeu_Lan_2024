@@ -108,20 +108,8 @@ function updatePlayers(players){ //On vient de récupérer la liste des players 
 				
 				if name == ds_map_find_value(player, "name") {
 				
-					if oldX != ds_map_find_value(player, "x"){
-						
-						x = lerp(x, ds_map_find_value(player, "x"), 0.1);
-						
-					}
-					
-					if oldY != ds_map_find_value(player, "y") {
-
-						y = lerp(y, ds_map_find_value(player, "y"), 0.1);
-
-					}
-					
-					oldX = ds_map_find_value(player, "x");
-					oldY = ds_map_find_value(player, "y");
+					x = lerp(x, ds_map_find_value(player, "x"), 0.1);
+					y = lerp(y, ds_map_find_value(player, "y"), 0.1);
 				
 					break; //On économise des calculs en arrétant de parcourir les entités dès qu'on a trouvé celle qui correspond 
 				}

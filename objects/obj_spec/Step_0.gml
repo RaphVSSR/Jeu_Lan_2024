@@ -1,7 +1,7 @@
 
 if !quitting && alarm[0] == -1 { //On envois pas de positions si le player est en train de quitter
 	
-	alarm[0] = 5;
+	alarm[0] = 1;
 }
 
 if name == global.playerName {
