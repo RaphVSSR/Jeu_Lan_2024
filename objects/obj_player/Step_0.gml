@@ -1,13 +1,20 @@
 
-if !quitting && alarm[0] == -1 { //On envois pas de positions si le player est en train de quitter
+if !quitting { //On envois pas de positions si le player est en train de quitter
 
 	alarm[0] = 10;
-	
 }
 
 if name == global.playerName {
 
-	//On fait la somme des angles pour les déplacements
+	localPlayer = true;
+	
+}
+
+playerCollisionsInit();
+
+//On fait la somme des angles pour les déplacements
+if localPlayer {
+	
 	if keyboard_check(vk_up) && keyboard_check(vk_left){
 
 		image_angle = 90 + 45;
@@ -32,7 +39,4 @@ if name == global.playerName {
 		grabObject(objectGrabed);
 	
 	}
-	
 }
-
-playerCollisionsInit();
