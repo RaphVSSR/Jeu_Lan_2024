@@ -17,7 +17,11 @@ if async_load[? "size"] > 0 {
 		addPlayers(players);
 		
 		//On envois les premières requêtes d'update une fois que les instances ont été créées
-		alarm[0] = 5;
+		var data = ds_map_create();
+	
+		ds_map_add(data, "hostName", global.hostName);
+	
+		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
 	
 	}
 
@@ -27,11 +31,12 @@ if async_load[? "size"] > 0 {
 		
 		updatePlayers(players);
 		
-		if alarm[0] == -1 {
-			
-			alarm[0] = 5;	
-			
-		}
+		//On update dès le retour de requête
+		var data = ds_map_create();
+	
+		ds_map_add(data, "hostName", global.hostName);
+	
+		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
 	
 	}
 
