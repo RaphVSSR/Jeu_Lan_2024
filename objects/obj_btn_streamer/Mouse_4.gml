@@ -7,6 +7,8 @@ if activated {
 	ds_map_add(data, "nbPlayer", noone);
 	ds_map_add(data, "streamer", true);
 
-	sendData(global.serverIp, data, global.playerBuffer, msgType.CREATE_HOST); //On envoi les données
+	var buffer = buffer_create(100, buffer_fixed, 100);
+
+	sendData(global.serverIp, data, buffer, msgType.CREATE_HOST); //On envoi les données
 	
 }

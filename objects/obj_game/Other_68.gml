@@ -20,8 +20,10 @@ if async_load[? "size"] > 0 {
 		var data = ds_map_create();
 	
 		ds_map_add(data, "hostName", global.hostName);
+		
+		buffer = buffer_create(50, buffer_fixed, 50);
 	
-		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+		sendData(global.serverIp, data, buffer, msgType.UPDATE_PLAYER_STAT);
 	
 	}
 
@@ -35,10 +37,14 @@ if async_load[? "size"] > 0 {
 		var data = ds_map_create();
 	
 		ds_map_add(data, "hostName", global.hostName);
+		
+		buffer = buffer_create(50, buffer_fixed, 50);
 	
-		sendData(global.serverIp, data, global.playerBuffer, msgType.UPDATE_PLAYER_STAT);
+		sendData(global.serverIp, data, buffer, msgType.UPDATE_PLAYER_STAT);
+		
 	
 	}
 
+	//buffer_delete(enterBuffer);
 
 }

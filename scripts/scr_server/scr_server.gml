@@ -11,11 +11,34 @@ function sendData(ip, dsMap, buffer, type){
 		
 		var encodedData = json_encode(dsMap);
 		
+		//show_debug_message("\nMap encodée avant envois:");
+		//show_debug_message(encodedData);
+		
 		ds_map_destroy(dsMap); //On supprime la structure de donnée décodée pour libérer de l'espace mémoire
 		
 		buffer_seek(buffer, buffer_seek_start, 0);
-		buffer_write(buffer, buffer_text, encodedData); //Buffer text ne contraint pas de limitte de donnée ni de dernier bit de terminaison 
-		network_send_udp_raw(global.client, ip, PORT, buffer, buffer_tell(buffer));
+		buffer_write(buffer, buffer_text, encodedData); //Buffer text ne contraint pas de limite de donnée ni de dernier bit de terminaison
+			
+		if buffer_tell(buffer) != 0 {
+				
+			network_send_udp_raw(global.client, ip, PORT, buffer, buffer_tell(buffer));
+			
+			//show_debug_message("Le buffer avant d'être envoyé:");
+		
+			//buffer_seek(buffer, buffer_seek_start, 0);
+			//show_debug_message(buffer_read(buffer, buffer_string));
+			
+		}else{
+			
+			//show_debug_message("Le buffer avant d'être envoyé:");
+		
+			//buffer_seek(buffer, buffer_seek_start, 0);
+			//show_debug_message(buffer_read(buffer, buffer_string));
+			
+		}
+		
+		buffer_delete(buffer);
+		
 	}
 	
 }
@@ -28,9 +51,6 @@ function globalVariablesInit(){ //Faut trier les globales system, host et player
 	}
 	
 	//Un buffer est un moyen de stockage de la donnée avant d'être envoyée
-	if !variable_global_exists("playerBuffer"){
-		global.playerBuffer = buffer_create(200, buffer_fixed, 200) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
-	}
 	
 	if !variable_global_exists("serverIp"){
 		global.serverIp = "Ip du serveur"; //Variable globale Init
@@ -107,9 +127,15 @@ function removeHost(i, hostsRoomList){
 
 function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 	
-	if hostsServerList == 0 && instance_exists(obj_host_item){
+	if nbHosts == 0 {
 		
-		instance_destroy(obj_host_item, true);
+		if instance_exists(obj_host_item) {
+			
+			instance_destroy(obj_host_item, true);
+			
+			ds_list_clear(hostsRoomList);
+		
+		}
 		
 	}else{
 		
@@ -202,7 +228,9 @@ function hostStop() {
 	
 	ds_map_add(data, "hostName", global.hostName);
 	
-	sendData(global.serverIp, data, global.playerBuffer, msgType.STOP_HOST);
+	var buffer = buffer_create(40, buffer_fixed, 40); //Taille JSON: 28bytes en moyenne + 10% 31bytes mais le pseudo est variable alors on monte jusqu'à 40bytes par sécurité
+	
+	sendData(global.serverIp, data, buffer, msgType.STOP_HOST);
 }
 
 function playerQuit() {
@@ -211,6 +239,8 @@ function playerQuit() {
 	
 	ds_map_add(data, "hostName", global.hostName);
 	ds_map_add(data, "playerName", global.playerName);
+	
+	var buffer = buffer_create(50, buffer_fixed, 50);
 
-	sendData(global.serverIp, data, global.playerBuffer, msgType.PLAYER_QUIT);
+	sendData(global.serverIp, data, buffer, msgType.PLAYER_QUIT);
 }

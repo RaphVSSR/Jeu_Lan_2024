@@ -26,7 +26,7 @@ if global.hostSelected == undefined && instance_exists(obj_btn_host) {
 }
 
 //====== Si on vient de hoster ======
-if global.hostActive {
+if global.hostActive && !instance_exists(obj_btn_hosting) {
 	
 	instance_destroy(obj_btn_host, true);	
 	instance_destroy(obj_btn_streamer, true);

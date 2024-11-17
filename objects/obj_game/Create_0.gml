@@ -13,8 +13,10 @@ ds_list_add(teams, teamTwo);
 
 
 //On ajoute les joueurs
-var data = ds_map_create();
+data = ds_map_create();
 	
 ds_map_add(data, "hostName", global.hostName);
+
+buffer = buffer_create(50, buffer_fixed, 50);
 	
-sendData(global.serverIp, data, global.playerBuffer, msgType.CREATE_PLAYERS);
+sendData(global.serverIp, data, buffer, msgType.CREATE_PLAYERS);

@@ -16,6 +16,8 @@ if global.hostsPendingDisplaying == true {
 	global.hostsPendingDisplaying = false; //Pour avoir un seul envois
 	
 	var data = ds_map_create();
+	
+	var buffer = buffer_create(10, buffer_fixed, 10);
 		
-	sendData(global.serverIp, data, global.playerBuffer, msgType.GET_HOSTS);
+	sendData(global.serverIp, data, buffer, msgType.GET_HOSTS);
 }

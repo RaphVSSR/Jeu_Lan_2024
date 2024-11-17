@@ -3,7 +3,7 @@
 //On affiche dans la console le message reçus depuis le serveur
 //show_debug_message(json_encode(async_load)) //async_load retourne une ref de ds_map et on l'encode en json pour accéder aux données
 
-if async_load[? "size"] > 0 {
+if async_load[? "size"] > 0 { //On regarde à la clé "size" renvoyée par dgram est suppérieure à 0
 	
 	//On récupère les données du buffer envoyées dans un buffer local
 	var enterBuffer = async_load[? "buffer"];
@@ -12,7 +12,7 @@ if async_load[? "size"] > 0 {
 	
 	var respData = json_decode(response); //On décode pour pouvoir décortiquer les données
 	
-	//show_debug_message(response);
+	show_debug_message(response);
 	
 	if ds_map_find_value(respData, "type") == msgType.CREATE_HOST {
 		
@@ -42,7 +42,22 @@ if async_load[? "size"] > 0 {
 	if ds_map_find_value(respData, "type") == msgType.GET_HOSTS {
 		
 		var hosts = ds_map_find_value(respData, "hosts");
-		var nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
+		
+		show_debug_message(hosts);
+		
+		var nbHosts;
+		
+		if ds_map_find_value(respData, "hosts") == 0 {
+			
+			nbHosts = 0;
+			
+		}else {
+			
+			nbHosts = ds_list_size(ds_map_find_value(respData, "hosts"));
+			
+		}
+		
+		show_debug_message(nbHosts);
 		
 		verifyHosts(hosts, nbHosts, hostsDisplayed); //On détermine si on doit créer ou supprimer
 		
@@ -102,5 +117,7 @@ if async_load[? "size"] > 0 {
 		
 	
 	}
+	
+	buffer_delete(enterBuffer); //On libère la mémoire
 	
 }

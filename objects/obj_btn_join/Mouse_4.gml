@@ -9,8 +9,10 @@ if activated {
 	ds_map_add(data, "hostName", global.hostName);
 	ds_map_add(data, "playerName", global.playerName);
 	ds_map_add(data, "teamName", global.teamName);
+	
+	var buffer = buffer_create(100, buffer_fixed, 100);
 
 	//Ajouter un player au host sélectionné + attribuer un nbPlayer au nouveau joueur
-	sendData(global.serverIp, data, global.playerBuffer, msgType.JOIN_HOST); //On envoi les données
+	sendData(global.serverIp, data, buffer, msgType.JOIN_HOST); //On envoi les données
 	
 }
