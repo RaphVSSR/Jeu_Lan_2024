@@ -21,7 +21,7 @@ function openMultipleWindows(){
 	}
 
 	window_set_caption("Game Instance #" + string(get_self()));
-	pid = run_self(0);
+	pid = run_self(1);
 
 	FreeExecutedProcessStandardOutput(pid);
 	FreeExecutedProcessStandardInput(pid);

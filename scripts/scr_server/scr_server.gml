@@ -133,6 +133,10 @@ function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 			
 			instance_destroy(obj_host_item, true);
 			
+			global.hostName = noone;
+			global.playerName = undefined;
+			global.hostSelected = undefined;
+			
 			ds_list_clear(hostsRoomList);
 		
 		}

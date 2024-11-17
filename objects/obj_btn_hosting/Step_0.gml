@@ -8,3 +8,4 @@ if state == 0 {
 	text = "Arrêter de host ?";	
 	
 }
+

@@ -43,7 +43,7 @@ if async_load[? "size"] > 0 { //On regarde à la clé "size" renvoyée par dgram
 		
 		var hosts = ds_map_find_value(respData, "hosts");
 		
-		show_debug_message(hosts);
+		//show_debug_message(hosts);
 		
 		var nbHosts;
 		
@@ -57,11 +57,11 @@ if async_load[? "size"] > 0 { //On regarde à la clé "size" renvoyée par dgram
 			
 		}
 		
-		show_debug_message(nbHosts);
+		//show_debug_message(nbHosts);
 		
 		verifyHosts(hosts, nbHosts, hostsDisplayed); //On détermine si on doit créer ou supprimer
 		
-		if hosts == 0 {
+		if nbHosts == 0 {
 			
 			noHosts = true;
 
