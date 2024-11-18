@@ -6,10 +6,10 @@ function instancePlayer(player){
 //====== On commence par déterminer comment le render ======
 	
 	//Est-ce qu'au moins une instance est déjà là ?
-	if instance_exists(obj_player){
+	if instance_exists(obj_player_1){
 		
 		//Si 2 instances players principaux existent déjà, alors le player passe directement en spec
-		if instance_number(obj_player) == 2{
+		if instance_number(obj_player_1) == 2{
 			
 			//On le passe en spec
 			global.playerName = ds_map_find_value(player, "name");
@@ -26,7 +26,7 @@ function instancePlayer(player){
 		}else{
 				
 			//Si une instance d'un perso principal existe déjà, si elle est de son équipe, alors on met le player en spec
-			if obj_player.teamName == ds_map_find_value(player, "teamName"){
+			if obj_player_1.teamName == ds_map_find_value(player, "teamName"){
 				
 				//On le met en spec
 				global.playerName = ds_map_find_value(player, "name");
@@ -45,7 +45,7 @@ function instancePlayer(player){
 				//On le défini comme un 2e perso principal
 				global.playerName = ds_map_find_value(player, "name");
 
-				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
+				return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player_1, {
 		
 					name: ds_map_find_value(player, "name"),
 					teamName: ds_map_find_value(player, "teamName"),
@@ -62,7 +62,7 @@ function instancePlayer(player){
 		
 		global.playerName = ds_map_find_value(player, "name");
 		
-		return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player, {
+		return instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_player_1, {
 		
 			name: ds_map_find_value(player, "name"),
 			teamName: ds_map_find_value(player, "teamName"),

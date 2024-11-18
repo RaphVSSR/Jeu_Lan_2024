@@ -81,7 +81,7 @@ function addPlayers(players){ //On vient de récupérer la liste des players du 
 		
 		//Il faut qu'on s'arrête quand les 2 persos principaux sont render et que les specs on les fait pas
 		//On affiche tout les persos principaux actuels
-		for (var i = 0; i < instance_number(obj_player); i++){
+		for (var i = 0; i < instance_number(obj_player_1); i++){
 		
 			var player = ds_list_find_value(players, i); //On travail au cas par cas pour les instancier
 		
@@ -155,7 +155,7 @@ function addPlayers(players){ //On vient de récupérer la liste des players du 
 	
 	
 	//On vérifie si on a déjà un player principal de présent
-	switch (instance_number(obj_player)){
+	switch (instance_number(obj_player_1)){
 	
 		case 0 || 1: //Le player est un player princ -> il doit voir les players princs et pas les specs
 			
@@ -184,11 +184,11 @@ function updatePlayers(players){ //On vient de récupérer la liste des players 
 		if ds_map_find_value(player, "name") != global.playerName{
 		
 			//On parcours tout les objets players pour les identifier
-			for (var j = 0; j < instance_number(obj_player); j++){ //On construit un espèce de foreach
+			for (var j = 0; j < instance_number(obj_player_1); j++){ //On construit un espèce de foreach
 				
-				if instance_find(obj_player, j).name == ds_map_find_value(player, "name"){
+				if instance_find(obj_player_1, j).name == ds_map_find_value(player, "name"){
 				
-					with(instance_find(obj_player, j)){ //Sur chaque instances on change ses stats
+					with(instance_find(obj_player_1, j)){ //Sur chaque instances on change ses stats
 				
 						x = ds_map_find_value(player, "x");
 						y = ds_map_find_value(player, "y");
