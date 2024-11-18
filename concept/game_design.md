@@ -50,7 +50,7 @@ Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipie
    - Si toute l'équipe se fait éliminer, elle a perdu. A la fin du temps limite, c'est l'équipe avec le moins de membres encore en lisse qui perd.
    - Si il y a égalité, alors on entame une mort subite. Bien entendu la partie sera faite pour finir plus vite.
 # 5. Look&Feels
-- [Mockups](https://github.com/RaphVSSR/Jeu_Lan_2024/concept/mockups)
+- [Mockups](https://github.com/RaphVSSR/Jeu_Lan_2024/tree/main/concept/mockups)
 - [Moodboard]()
 # Annexes
 - ### Nomenclature des fichiers et des dossiers
