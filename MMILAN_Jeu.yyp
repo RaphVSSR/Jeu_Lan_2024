@@ -56,6 +56,7 @@
     {"id":{"name":"fnt_no_hosts","path":"fonts/fnt_no_hosts/fnt_no_hosts.yy",},},
     {"id":{"name":"orga","path":"notes/orga/orga.yy",},},
     {"id":{"name":"tests","path":"notes/tests/tests.yy",},},
+    {"id":{"name":"ba","path":"notes/ba/ba.yy",},},
     {"id":{"name":"obj_btn_host","path":"objects/obj_btn_host/obj_btn_host.yy",},},
     {"id":{"name":"obj_btn_hosting","path":"objects/obj_btn_hosting/obj_btn_hosting.yy",},},
     {"id":{"name":"obj_btn_join","path":"objects/obj_btn_join/obj_btn_join.yy",},},
