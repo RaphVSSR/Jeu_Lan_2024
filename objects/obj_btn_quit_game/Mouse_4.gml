@@ -1,9 +1,9 @@
 
 if global.hostName != noone && global.hostActive {
-	global.shouldHostStop = true;
+	hostStop();
 	
 }else if global.hostName != noone && !global.hostActive{
-	global.shouldPlayerQuit = true;	
+	playerQuit();
 }
 
-room_goto(rm_lobby);
+obj_player.quitting = true;
