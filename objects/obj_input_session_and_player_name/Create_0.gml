@@ -1,5 +1,5 @@
 
 clicked = false;
-limitChar = 24;
+limitChar = undefined;
 	
 txtTyped = "Nom de la future session";

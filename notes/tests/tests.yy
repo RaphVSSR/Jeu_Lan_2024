@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"tests",
+  "name":"tests",
+  "parent":{
+    "name":"MMILAN_Jeu",
+    "path":"MMILAN_Jeu.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

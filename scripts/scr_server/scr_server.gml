@@ -11,16 +11,39 @@ function sendData(ip, dsMap, buffer, type){
 		
 		var encodedData = json_encode(dsMap);
 		
+		//show_debug_message("\nMap encodée avant envois:");
+		//show_debug_message(encodedData);
+		
 		ds_map_destroy(dsMap); //On supprime la structure de donnée décodée pour libérer de l'espace mémoire
 		
 		buffer_seek(buffer, buffer_seek_start, 0);
-		buffer_write(buffer, buffer_text, encodedData); //Buffer text ne contraint pas de limitte de donnée ni de dernier bit de terminaison 
-		network_send_udp_raw(global.client, ip, PORT, buffer, buffer_tell(buffer));
+		buffer_write(buffer, buffer_text, encodedData); //Buffer text ne contraint pas de limite de donnée ni de dernier bit de terminaison
+			
+		if buffer_tell(buffer) != 0 {
+				
+			network_send_udp_raw(global.client, ip, PORT, buffer, buffer_tell(buffer));
+			
+			//show_debug_message("Le buffer avant d'être envoyé:");
+		
+			//buffer_seek(buffer, buffer_seek_start, 0);
+			//show_debug_message(buffer_read(buffer, buffer_string));
+			
+		}else{
+			
+			//show_debug_message("Le buffer avant d'être envoyé:");
+		
+			//buffer_seek(buffer, buffer_seek_start, 0);
+			//show_debug_message(buffer_read(buffer, buffer_string));
+			
+		}
+		
+		buffer_delete(buffer);
+		
 	}
 	
 }
 
-function globalVariablesInit(){
+function globalVariablesInit(){ //Faut trier les globales system, host et player
 	
 	// Création de notre liaison entre le client et le serveur
 	if !variable_global_exists("client"){
@@ -28,9 +51,6 @@ function globalVariablesInit(){
 	}
 	
 	//Un buffer est un moyen de stockage de la donnée avant d'être envoyée
-	if !variable_global_exists("playerBuffer"){
-		global.playerBuffer = buffer_create(100, buffer_fixed, 100) //On veut envoyer toute la donnée en 1 seul packet c'est pour ça qu'il est fixe
-	}
 	
 	if !variable_global_exists("serverIp"){
 		global.serverIp = "Ip du serveur"; //Variable globale Init
@@ -38,14 +58,6 @@ function globalVariablesInit(){
 	
 	if !variable_global_exists("nbPlayer"){
 		global.nbPlayer = noone;
-	}
-	
-	if !variable_global_exists("shouldPlayerQuit"){
-		global.shouldPlayerQuit = false;
-	}
-	
-	if !variable_global_exists("shouldHostStop"){
-		global.shouldHostStop = false;
 	}
 	
 	if !variable_global_exists("hostActive"){
@@ -71,6 +83,14 @@ function globalVariablesInit(){
 	if !variable_global_exists("playerName"){
 		global.playerName = undefined;
 	}
+	
+	if !variable_global_exists("teamName"){
+		global.teamName = undefined;
+	}
+	
+	if !variable_global_exists("visibility"){
+		global.visibility = undefined;
+	}
 }
 
 function displayHost(i, hostName, nbPlayers, hostsRoomList){
@@ -78,12 +98,19 @@ function displayHost(i, hostName, nbPlayers, hostsRoomList){
 	var dsHost = ds_map_create(); //On fait un objet par hosts
 	
 	ds_map_add(dsHost, "hostName", hostName);
-	ds_map_add(dsHost, "id", instance_create_depth(80, 100 + (130 * i), 0, obj_host_item, {	//On créer une instance du parent obj_host_item et on stocke son id
-				
-		hostName: hostName,
-		hostPlayers: nbPlayers
-				
-	}));
+	ds_map_add(dsHost, "id", instance_create_depth(80, 100 + (130 * i), 0, obj_host_item)); //On créer une instance du parent obj_host_item et on stocke son id
+	
+	with ds_map_find_value(dsHost, "id") {
+	
+		name = hostName;
+		
+		if nbPlayers != 0 {
+			
+			players = nbPlayers;	
+			
+		}
+		
+	}
 	
 	ds_list_insert(hostsRoomList, i, dsHost); //On insert le host dans la liste locale au même index que celui du serveur pour faciliter les vérifications
 }
@@ -100,12 +127,51 @@ function removeHost(i, hostsRoomList){
 
 function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 	
-	if hostsServerList == 0 && instance_exists(obj_host_item){
+	if nbHosts == 0 {
 		
-		instance_destroy(obj_host_item, true);
+		if instance_exists(obj_host_item) {
+			
+			instance_destroy(obj_host_item, true);
+			
+			global.hostName = noone;
+			global.playerName = undefined;
+			global.hostSelected = undefined;
+			
+			ds_list_clear(hostsRoomList);
+		
+		}
 		
 	}else{
+		
+		//Avant d'ajouter ou de supprimer, on va mettre à jour les infos de ceux qui sont déjà affichés
+		if instance_exists(obj_host_item){
+			
+			for (var i = 0; i < nbHosts; i++){
+			
+				var modified = false;
+			
+				with obj_host_item {
+				
+					if ds_map_find_value(ds_list_find_value(hostsServerList, i), "name") == name {
+					
+						players = ds_list_size(ds_map_find_value(ds_list_find_value(hostsServerList, i), "players"));
+					
+						modified = true;
+					
+						break;
+					
+					}
+				}
+			
+				if modified {
+				
+					break;	
+				
+				}
+			}
+		}
 	
+		//Maintenant on s'occupe des autres
 		if nbHosts > ds_list_size(hostsRoomList){
 		
 			for (var i = 0; i < nbHosts; ++i) {
@@ -158,4 +224,27 @@ function verifyHosts(hostsServerList, nbHosts, hostsRoomList){
 		
 		}
 	}
+}
+
+function hostStop() {
+	
+	var data = ds_map_create();
+	
+	ds_map_add(data, "hostName", global.hostName);
+	
+	var buffer = buffer_create(40, buffer_fixed, 40); //Taille JSON: 28bytes en moyenne + 10% 31bytes mais le pseudo est variable alors on monte jusqu'à 40bytes par sécurité
+	
+	sendData(global.serverIp, data, buffer, msgType.STOP_HOST);
+}
+
+function playerQuit() {
+	
+	var data = ds_map_create();
+	
+	ds_map_add(data, "hostName", global.hostName);
+	ds_map_add(data, "playerName", global.playerName);
+	
+	var buffer = buffer_create(50, buffer_fixed, 50);
+
+	sendData(global.serverIp, data, buffer, msgType.PLAYER_QUIT);
 }

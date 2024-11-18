@@ -4,7 +4,7 @@
 // Inherit the parent event
 event_inherited();
 
-if !position_meeting(mouse_x, mouse_y, obj_input_prnt){
+if !position_meeting(mouse_x, mouse_y, obj_input_prnt) || position_meeting(mouse_x, mouse_y, obj_input_team_name){
 	clicked = false;
 	
 	if (string_trim(txtTyped) == "") && global.hostSelected == undefined {
