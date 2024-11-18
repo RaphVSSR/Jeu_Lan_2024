@@ -92,7 +92,7 @@ function playerCollisionsInit(){
 			x = (x + (-x)) + sprite_width;
 			
 		}
-	
+		
 	}
 
 	//Axe des Y

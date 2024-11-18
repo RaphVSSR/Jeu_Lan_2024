@@ -20,7 +20,19 @@ if (lance) {
     y += lengthdir_y(vitesse, angle_lancer);
 }
 
-// Si la bombe dépasse les limites de la room
-if (playerCollisionsInit()) {
-    exploser(); // Appeler la fonction d'explosion
+
+
+
+
+// Si la bombe est collée à un joueur
+if (joueur_colle != noone) {
+    // Colle la bombe à la position du joueur adverse
+    x = joueur_colle.x;
+    y = joueur_colle.y;
+} else if (lance) {
+    // Sinon, la bombe suit sa trajectoire normale
+    x += lengthdir_x(vitesse, angle_lancer);
+    y += lengthdir_y(vitesse, angle_lancer);
 }
+
+collisionInit();

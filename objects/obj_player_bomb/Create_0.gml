@@ -9,4 +9,6 @@ vitesse = 5;              // Vitesse de déplacement de l'objet
 
 angle_lancer = 0;         // Angle de lancement de l'objet
 
-previewCollision = 30;
+previewCollision = 10;
+
+joueur_colle = noone; // Pas de joueur collé initialement

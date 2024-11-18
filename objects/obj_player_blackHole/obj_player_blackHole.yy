@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player_fist",
+  "%Name":"obj_player_blackHole",
   "eventList":[],
   "managed":true,
-  "name":"obj_player_fist",
+  "name":"obj_player_blackHole",
   "overriddenProperties":[],
   "parent":{
     "name":"obj_player",

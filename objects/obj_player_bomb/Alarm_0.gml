@@ -1,10 +1,7 @@
-// Explosion de l'objet
-show_debug_message("L'objet a explosé !");
 
- 
+exploser();
 
-// Créer un effet visuel ou sonore d'explosion si désiré (optionnel)
-// instance_create_layer(x, y, "Effets", obj_explosion);
+effect_create_above(ef_explosion, x, y, 1, c_red);
 
 // Détruire l'objet
 instance_destroy();

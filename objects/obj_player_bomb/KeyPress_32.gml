@@ -6,6 +6,6 @@ if (instance_exists(obj_player_bomb)) {
         angle_lancer = point_direction(x, y, obj_player_1.x, obj_player_1.y); // Angle vers le joueur
 
         // Crée un timer pour faire exploser et détruire l'objet après 5 secondes (300 steps)
-        alarm[0] = 500;
+        alarm[0] = 100;
     }
 }
