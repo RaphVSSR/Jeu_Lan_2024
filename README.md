@@ -1,7 +1,7 @@
 # Bienvenu dans le projet de création du jeu de la MMILAN 2024
 Actuellement nous sommes une équipe de 5 personnes: Séraphin, Nazar, Luis Miguel, Thomas et Raphaël
 ### Les fichiers obligatoires pour la réalisation du jeu
-- [ ] [Le GDD](/concept/game_design.md)
+- [x] [Le GDD](/concept/game_design.md)
 - [ ] [La bible graphique]()
 - [ ] [Le TDD]()
 ### Ici listé toutes les ressources utilisées pour la création du jeu
