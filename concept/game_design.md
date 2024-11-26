@@ -36,7 +36,7 @@ Témoins direct de l'affrontement entre la LAN 2024 et celle de l'année derniè
 ### 4.3 **Les 3C**
    - Caméra: Caméra fixe (écran = taille de map)
    - Character: **Il y a 2 personnages principaux: la mascotte de l'année dernière et la potentielle nouvelle mascotte. Toutes 2 seront incarnées par des joueurs**
-   - Controller: Le jeu va être basé sur les contrôles de manettes (universelles) mais il peut être adapté pour les claviers/souris
+   - Controller: Le jeu va être basé sur les contrôles clavier/souris mais il peut être adapté pour les manettes.
 
 ### 4.4 **Core Gameplay**
    - Piliers du jeu: Versus, Objets, Stratégie, Equipes
