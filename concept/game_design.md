@@ -15,9 +15,9 @@
 - Clip Studio Paint
 - Virtual Studio Code
 # 2. Pitch
-On vous présente un jeu PVP 2D, mettant en scène l'affrontement entre la mascotte de la LAN de l'année dernière et celle de cette année. En équipe de 3, un joueur par équipe incarnera une mascotte et l'affrontement sera indirect. Les dégâts seront infligés grâce au décor et avec une arme principale non-léthale.
+On vous présente un jeu PVP 2D, mettant en scène l'affrontement entre la mascotte de la LAN de l'année dernière et celle de cette année. En équipe de 3, un joueur par équipe incarnera une mascotte et l'affrontement sera indirect. Les dégâts seront infligés grâce au décor et une arme principale non-léthale, de plus des consomables seront apparu au court de la partie sur la map.
 
-En parallèle, les 2 autres coéquipiers de chaque équipes, en tant que spectateurs, auront une responsabilité déterminante: en plaçant des objets et en lâchant des consommables aux joueurs, ils offrent la possibilité de mettre en place une stratégie sur place (on laissera juste assez de temps au préalable pour savoir comment jouer mais pas assez pour monter des stratégies efficace).
+En parallèle, les 2 autres coéquipiers de chaque équipes, en tant que spectateurs, auront une responsabilité déterminante: en plaçant des objets sur la map, ils offrent la possibilité de mettre en place une stratégie sur place (on laissera juste assez de temps au préalable pour savoir comment jouer mais pas assez pour monter des stratégies efficace).
 # 3. Références
 - [Etudes de l'existant (Figjam)](https://www.figma.com/board/TzOCzQbDci5kVt4ebz25BO/Etude-de-l'existant?node-id=0-1&t=lUCQrGcGdsUSomjn-1) *_Forces et faiblesses_*
 # 4. Le jeu concrètement
@@ -41,7 +41,7 @@ Témoins direct de l'affrontement entre la LAN 2024 et celle de l'année derniè
 ### 4.4 **Core Gameplay**
    - Piliers du jeu: Versus, Objets, Stratégie, Equipes
 ---
-La partie se déroule en 2 équipes de 3, 1 joueur initial et 2 "spectateurs" par équipe. Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire et/ou consommables pour pouvoir tirer un avantage sur son adversaire. Quelques décors interactifs offriront également la possibilité d'obtenir un avantage.
+La partie se déroule en 2 équipes de 3, 1 joueur initial et 2 "spectateurs" par équipe. Le joueur doit toucher son adversaire à l'aide d'un objet principal présent en milieu de map, puis par la suite, les "spectateurs" de son équipe vont pouvoir lui donner la possibilité d'utiliser d'autres objets secondaire pour pouvoir tirer un avantage sur son adversaire. Quelques décors interactifs offriront également la possibilité d'obtenir un avantage ainsi que l'apparition de consomables.
 
 Une fois son adversaire touché, celui-ci donne sa place à un de ses coéquipiers puis il devient spectateur. Chaque joueur a 3 hits en tant que vie, une fois touché 3 fois, il est définitivement éliminé. Lorsque tout les membres d'une équipe sont éliminés, celle-ci perd la partie.
 
