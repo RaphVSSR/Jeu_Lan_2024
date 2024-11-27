@@ -1,21 +1,21 @@
 
-if localPlayer {
+//if localPlayer {
 	
-	if !objectGrabed {
+//	if !objectGrabed {
 	
-		var target = collision_circle(x, y, 30, obj_main_object, false, true);
+//		var target = collision_circle(x, y, 30, obj_main_object, false, true);
 
-		if target {
+//		if target {
 	
-			grabObject(target);
+//			grabObject(target);
 	
-		}
+//		}
 		
-	}else if objectGrabed {
+//	}else if objectGrabed {
 
-		objectGrabed.use = true;
-		objectGrabed = noone; //On l'a utilisé donc il n'est plus
+//		objectGrabed.use = true;
+//		objectGrabed = noone; //On l'a utilisé donc il n'est plus
 	
-	}
+//	}
 	
-}
+//}

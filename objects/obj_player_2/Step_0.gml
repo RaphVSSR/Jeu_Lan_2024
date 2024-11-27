@@ -27,11 +27,4 @@ if localPlayer {
 		image_angle = 270 - 45;	
 	
 	}
-	
-	//On a attrapé l'objet et il n'est pas en cours d'utilisation
-	if objectGrabed && objectGrabed.use == false{
-	
-		grabObject(objectGrabed);
-	
-	}
 }
