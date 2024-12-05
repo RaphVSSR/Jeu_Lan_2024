@@ -1,4 +1,4 @@
-
+ 
 // Mettre à jour l'angle de vue vers la position de la souris (facultatif, selon ton jeu)
 //angle_vue = point_direction(x, y, mouse_x, mouse_y);
 
@@ -29,6 +29,7 @@ if localPlayer {
 	}
 	
 	//On a attrapé l'objet et il n'est pas en cours d'utilisation
+	
 	if objectGrabed && objectGrabed.use == false{
 	
 		grabObject(objectGrabed);

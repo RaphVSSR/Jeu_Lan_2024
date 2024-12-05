@@ -117,11 +117,16 @@ function playerCollisionsInit(){
 function grabObject(target){
 
 	target.depth = -10;
-
-	target.x = x + lengthdir_x(30, image_angle);
-	target.y = y + lengthdir_y(30, image_angle);
-
+	
+	target.x = x;
+	target.y = y;
 	target.image_angle = image_angle;
 	
-	objectGrabed = target;
-}
+	if target != objectGrabed{
+		
+		objectGrabed = target;
+		
+	}
+ }
+ 
+ 

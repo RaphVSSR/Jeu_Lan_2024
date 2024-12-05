@@ -70,6 +70,7 @@
     {"id":{"name":"obj_player_blackHole","path":"objects/obj_player_blackHole/obj_player_blackHole.yy",},},
     {"id":{"name":"obj_player_bomb","path":"objects/obj_player_bomb/obj_player_bomb.yy",},},
     {"id":{"name":"obj_player_pique","path":"objects/obj_player_pique/obj_player_pique.yy",},},
+    {"id":{"name":"obj_player_prnt","path":"objects/obj_player_prnt/obj_player_prnt.yy",},},
     {"id":{"name":"obj_server","path":"objects/obj_server/obj_server.yy",},},
     {"id":{"name":"obj_spec","path":"objects/obj_spec/obj_spec.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
